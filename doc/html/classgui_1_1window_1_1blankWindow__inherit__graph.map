@@ -1,6 +1,0 @@
-<map id="blankWindow" name="blankWindow">
-<area shape="rect" id="node2" href="$classcalc__ep_1_1confWindow.html" title="This class builds a window for selecting and saving options of ADaManT. " alt="" coords="5,80,97,107"/>
-<area shape="rect" id="node3" href="$classcalc__ep_1_1inputWin.html" title="Objects of this class type are windows for input the wanted data structure. " alt="" coords="122,80,194,107"/>
-<area shape="rect" id="node4" href="$classcalc__ep_1_1MainWindow.html" title="This is the class for the main window object. " alt="" coords="219,80,313,107"/>
-<area shape="rect" id="node5" href="$classgui_1_1window_1_1metaWin.html" title="Creates a window for generating meta data fields. " alt="" coords="337,80,411,107"/>
-</map>
