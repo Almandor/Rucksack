@@ -1,0 +1,81 @@
+\hypertarget{winhelper_8py}{}\section{winhelper.\+py File Reference}
+\label{winhelper_8py}\index{winhelper.\+py@{winhelper.\+py}}
+
+
+collection of helper tools for building Tk() windows/apps  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classgui_1_1winhelper_1_1AutoScrollbar}{Auto\+Scrollbar}
+\begin{DoxyCompactList}\small\item\em A scrollbar that hides itself if it\textquotesingle{}s not needed. \end{DoxyCompactList}\item 
+class \hyperlink{classgui_1_1winhelper_1_1InfoCanvas}{Info\+Canvas}
+\begin{DoxyCompactList}\small\item\em A Canvas-\/widget that holds a scrollable Message-\/widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{winhelper_8py_ab49d6e45545da794eb69131ec7d9696d}{build\+Win\+Check} (win=None, opts=\{\})
+\begin{DoxyCompactList}\small\item\em This function is a little helper for building windows with check buttons. \end{DoxyCompactList}\item 
+def \hyperlink{winhelper_8py_a903bf361e25d2502a452ab7c789037d5}{build\+Win\+Radio} (win=None, opts=\{\})
+\begin{DoxyCompactList}\small\item\em This function is a little helper to build with radio buttons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+collection of helper tools for building Tk() windows/apps 
+
+\begin{DoxyDate}{Date}
+(C) 2012 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Marcus Schwamberger  \href{mailto:marcus@lederzeug.de}{\tt marcus@lederzeug.\+de} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+5.\+4 alpha 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\index{winhelper.\+py@{winhelper.\+py}!build\+Win\+Check@{build\+Win\+Check}}
+\index{build\+Win\+Check@{build\+Win\+Check}!winhelper.\+py@{winhelper.\+py}}
+\subsubsection[{\texorpdfstring{build\+Win\+Check(win=\+None, opts=\lcurly{}\rcurly{})}{buildWinCheck(win=None, opts=\{\})}}]{\setlength{\rightskip}{0pt plus 5cm}def gui.\+winhelper.\+build\+Win\+Check (
+\begin{DoxyParamCaption}
+\item[{}]{win = {\ttfamily None}, }
+\item[{}]{opts = {\ttfamily \{\}}}
+\end{DoxyParamCaption}
+)}\hypertarget{winhelper_8py_file_ab49d6e45545da794eb69131ec7d9696d}{}\label{winhelper_8py_file_ab49d6e45545da794eb69131ec7d9696d}
+
+
+This function is a little helper for building windows with check buttons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & this is the Tk() main window where the frames build by this function will be set in. \\
+\hline
+{\em opts} & a dictionary with the options which can be chosen. \\
+\hline
+\end{DoxyParams}
+\index{winhelper.\+py@{winhelper.\+py}!build\+Win\+Radio@{build\+Win\+Radio}}
+\index{build\+Win\+Radio@{build\+Win\+Radio}!winhelper.\+py@{winhelper.\+py}}
+\subsubsection[{\texorpdfstring{build\+Win\+Radio(win=\+None, opts=\lcurly{}\rcurly{})}{buildWinRadio(win=None, opts=\{\})}}]{\setlength{\rightskip}{0pt plus 5cm}def gui.\+winhelper.\+build\+Win\+Radio (
+\begin{DoxyParamCaption}
+\item[{}]{win = {\ttfamily None}, }
+\item[{}]{opts = {\ttfamily \{\}}}
+\end{DoxyParamCaption}
+)}\hypertarget{winhelper_8py_file_a903bf361e25d2502a452ab7c789037d5}{}\label{winhelper_8py_file_a903bf361e25d2502a452ab7c789037d5}
+
+
+This function is a little helper to build with radio buttons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & this is the Tk() window where the herein build frames were placed in. \\
+\hline
+{\em opts} & This is a dictionary which holds the selectable options \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em value} & A string object with the radio button content of the (chosen) language will be returned. \\
+\hline
+\end{DoxyRetVals}

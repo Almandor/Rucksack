@@ -1,0 +1,75 @@
+\hypertarget{logbox_8py}{}\section{logbox.\+py File Reference}
+\label{logbox_8py}\index{logbox.\+py@{logbox.\+py}}
+
+
+a module with logging tools  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{logbox_8py_a424ba1d0f5357859c5b31227ead3c3b7}{create\+Logger} (logger=\textquotesingle{}rpg-\/Logger\textquotesingle{}, loglvl=\textquotesingle{}debug\textquotesingle{}, logsize=\textquotesingle{}2 MB\textquotesingle{}, count=5, logpath=\textquotesingle{}/var/log/\textquotesingle{}, logfile=\textquotesingle{}rpg-\/tools.\+log\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em this function builds a full usable logging object with handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \hyperlink{logbox_8py_a1f26c4b691485aacd43d4ebc53bde938}{L\+E\+V\+EL}\hypertarget{logbox_8py_a1f26c4b691485aacd43d4ebc53bde938}{}\label{logbox_8py_a1f26c4b691485aacd43d4ebc53bde938}
+
+\begin{DoxyCompactList}\small\item\em Debugging level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a module with logging tools 
+
+This module consists of functions to handle a logging.
+
+\begin{DoxyDate}{Date}
+(C) 2012-\/2016 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Marcus Schwamberger  \href{mailto:marcus@lederzeug.de}{\tt marcus@lederzeug.\+de} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+4.\+1 alpha 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\index{logbox.\+py@{logbox.\+py}!create\+Logger@{create\+Logger}}
+\index{create\+Logger@{create\+Logger}!logbox.\+py@{logbox.\+py}}
+\subsubsection[{\texorpdfstring{create\+Logger(logger=\textquotesingle{}rpg-\/\+Logger\textquotesingle{}, loglvl=\textquotesingle{}debug\textquotesingle{}, logsize=\textquotesingle{}2 M\+B\textquotesingle{}, count=5, logpath=\textquotesingle{}/var/log/\textquotesingle{}, logfile=\textquotesingle{}rpg-\/tools.\+log\textquotesingle{})}{createLogger(logger='rpg-Logger', loglvl='debug', logsize='2 MB', count=5, logpath='/var/log/', logfile='rpg-tools.log')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+logbox.\+create\+Logger (
+\begin{DoxyParamCaption}
+\item[{}]{logger = {\ttfamily \textquotesingle{}rpg-\/Logger\textquotesingle{}}, }
+\item[{}]{loglvl = {\ttfamily \textquotesingle{}debug\textquotesingle{}}, }
+\item[{}]{logsize = {\ttfamily \textquotesingle{}2~MB\textquotesingle{}}, }
+\item[{}]{count = {\ttfamily 5}, }
+\item[{}]{logpath = {\ttfamily \textquotesingle{}/var/log/\textquotesingle{}}, }
+\item[{}]{logfile = {\ttfamily \textquotesingle{}rpg-\/tools.log\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{logbox_8py_file_a424ba1d0f5357859c5b31227ead3c3b7}{}\label{logbox_8py_file_a424ba1d0f5357859c5b31227ead3c3b7}
+
+
+this function builds a full usable logging object with handler. 
+
+This builds a logging object and a logging handler which will be linked to the object. Further, it sets the logging formatter\+: {\itshape time\+:} {\itshape level\+:} {\itshape message} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger} & Name of logger object; default \textquotesingle{}A\+Da\+Man\+T-\/\+Logger\textquotesingle{} \\
+\hline
+{\em loglvl} & Logging level, may be (debug, info, warning, error, critical); default\+: debug \\
+\hline
+{\em logsize} & default\+: 2 MB, may be KB or MB. The max. size is 100 MB. If set on a higher value the log size will be set to 100 MB automatically. \\
+\hline
+{\em count} & number of log files to be stored \\
+\hline
+{\em logpath} & path to log files; default is \textquotesingle{}/var/log/\textquotesingle{} \\
+\hline
+{\em logfile} & name of the log file; default K\+M\+T.\+log\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em result} & complete logger object with handler \\
+\hline
+\end{DoxyRetVals}

@@ -1,0 +1,366 @@
+\hypertarget{globaltools_8py}{}\section{globaltools.\+py File Reference}
+\label{globaltools_8py}\index{globaltools.\+py@{globaltools.\+py}}
+
+
+a bunch of nice global tools.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{globaltools_8py_a7837b18e219c540d8a30bd9631314a0a}{array2dict} (array=\mbox{[}$\,$\mbox{]}, expr=\textquotesingle{}=\textquotesingle{}, comment=\textquotesingle{}\#\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This function transforms an array $<$str1$>$=$<$str2$>$ into a dictionary \{ $<$str1$>$ \+: $<$str2$>$\}. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a169a201fcc606a30afa380587cbc6c09}{asci\+Loops} (way=\mbox{[}$\,$\mbox{]}, element=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em This is a small helper function to display a loop from a list as \textquotesingle{}asci\textquotesingle{}. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a80518a0197675bea51148d1c3cd40279}{check\+Exist} (arg=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em This function checks whether given argument (object/variable/list...) already exists or not. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_ab12184b6cf7857bd9d51fc9af4ab1f52}{check\+Files} (path=\textquotesingle{}./\textquotesingle{}, file\+\_\+list=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function check out whether a list of files exists in a specific directory. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a87c99a26e79147d5025cfdfda26dc57d}{count\+Elem} (elem=\textquotesingle{}\textquotesingle{}, alist=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This tiny functions just count the occurrences of an element in a list. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a388d233340dff99be67f0afc03953992}{find\+Loops} (struc=\{\}, elem=\textquotesingle{}\textquotesingle{}, way=\mbox{[}$\,$\mbox{]}, result=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function looks for loops in a tree structure. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a26eac5d473aed10e2965d37099bf9e5e}{get\+Last} (string=\char`\"{}/\char`\"{}, sep=\textquotesingle{}/\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This function gives the last element of a list stored in a string. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a748b3ad515bb5f8281892b7f82a7ff4b}{list2str} (array=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function transforms a list/tuple into a string where the elements are separated by spaces. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a4eea1f0cbce0bb32cd15f2f6847a40b5}{make\+Key\+List} (dic=\{\}, klist=\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This function simply extracts/compares the key index of a given dictionary with a list. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a3f1400c5d3ed1fc184f85581b8aedc1a}{read\+File} (path=\textquotesingle{}./\textquotesingle{}, file\+\_\+name=None, mode=\textquotesingle{}r\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This function reads a file and returns its content. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a65b43889cc476f29c33c6e9f22b368a7}{sort\+Index} (dic=\{\})
+\begin{DoxyCompactList}\small\item\em This function is a little helper when sorting a dictionary. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_a5b344d6078286fff96c81ccfdb524aa6}{tstr2list} (string=\textquotesingle{}(1, 2, 3)\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This function transforms a string which \textquotesingle{}looks like a tuple\textquotesingle{} into a list. \end{DoxyCompactList}\item 
+def \hyperlink{globaltools_8py_ad297bc6fb6b7b3a45a467248ce2ba004}{write\+File} (path=\textquotesingle{}./\textquotesingle{}, file\+\_\+name=\textquotesingle{}output\textquotesingle{}, data=None, mode=\textquotesingle{}w\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em This function simply (over)writes a file with given data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+a bunch of nice global tools. 
+
+This module holds some nice small helper functions like I/O things.
+
+\begin{DoxyAuthor}{Author}
+Marcus Schwamberger 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+(c) 2012-\/2016 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+0.\+5.\+4 alpha  \href{mailto:marcus@lederzeug.de}{\tt marcus@lederzeug.\+de} 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\index{globaltools.\+py@{globaltools.\+py}!array2dict@{array2dict}}
+\index{array2dict@{array2dict}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{array2dict(array=[], expr=\textquotesingle{}=\textquotesingle{}, comment=\textquotesingle{}\#\textquotesingle{})}{array2dict(array=[], expr='=', comment='#')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+array2dict (
+\begin{DoxyParamCaption}
+\item[{}]{array = {\ttfamily \mbox{[}\mbox{]}}, }
+\item[{}]{expr = {\ttfamily \textquotesingle{}=\textquotesingle{}}, }
+\item[{}]{comment = {\ttfamily \textquotesingle{}\#\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a7837b18e219c540d8a30bd9631314a0a}{}\label{globaltools_8py_file_a7837b18e219c540d8a30bd9631314a0a}
+
+
+This function transforms an array $<$str1$>$=$<$str2$>$ into a dictionary \{ $<$str1$>$ \+: $<$str2$>$\}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & the array which shall be transformed \\
+\hline
+{\em expr} & the character where the string shall be split; default is \textquotesingle{}=\textquotesingle{} \\
+\hline
+{\em comment} & this parameter holds the comment character to filter comments out. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em result} & a dictionary \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!asci\+Loops@{asci\+Loops}}
+\index{asci\+Loops@{asci\+Loops}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{asci\+Loops(way=[], element="""")}{asciLoops(way=[], element="")}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+asci\+Loops (
+\begin{DoxyParamCaption}
+\item[{}]{way = {\ttfamily \mbox{[}\mbox{]}}, }
+\item[{}]{element = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a169a201fcc606a30afa380587cbc6c09}{}\label{globaltools_8py_file_a169a201fcc606a30afa380587cbc6c09}
+
+
+This is a small helper function to display a loop from a list as \textquotesingle{}asci\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em way} & the way which was run through when the loop was found \\
+\hline
+{\em element} & the element which causes the loop \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em a} & string containing the asci display of the loop \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!check\+Exist@{check\+Exist}}
+\index{check\+Exist@{check\+Exist}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{check\+Exist(arg="""")}{checkExist(arg="")}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+check\+Exist (
+\begin{DoxyParamCaption}
+\item[{}]{arg = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a80518a0197675bea51148d1c3cd40279}{}\label{globaltools_8py_file_a80518a0197675bea51148d1c3cd40279}
+
+
+This function checks whether given argument (object/variable/list...) already exists or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & a string that holds the name of the object, variable, list etc. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It delivers \textquotesingle{}globals\textquotesingle{} if it is found in globals(), \textquotesingle{}locals\textquotesingle{} if it is found in locals() or False if it is not found. 
+\end{DoxyReturn}
+\index{globaltools.\+py@{globaltools.\+py}!check\+Files@{check\+Files}}
+\index{check\+Files@{check\+Files}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{check\+Files(path=\textquotesingle{}./\textquotesingle{}, file\+\_\+list=[])}{checkFiles(path='./', file_list=[])}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+check\+Files (
+\begin{DoxyParamCaption}
+\item[{}]{path = {\ttfamily \textquotesingle{}./\textquotesingle{}}, }
+\item[{}]{file\+\_\+list = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_ab12184b6cf7857bd9d51fc9af4ab1f52}{}\label{globaltools_8py_file_ab12184b6cf7857bd9d51fc9af4ab1f52}
+
+
+This function check out whether a list of files exists in a specific directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to be searched for the files \\
+\hline
+{\em file\+\_\+list} & an array containing the list of filenames to search for.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em result} & a dictionary which holds the filename as key and False/\+True as value. If the path does not exist it contains just \{\textquotesingle{}path\textquotesingle{}\+:False\} \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!count\+Elem@{count\+Elem}}
+\index{count\+Elem@{count\+Elem}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{count\+Elem(elem=\textquotesingle{}\textquotesingle{}, alist=[])}{countElem(elem='', alist=[])}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+count\+Elem (
+\begin{DoxyParamCaption}
+\item[{}]{elem = {\ttfamily \textquotesingle{}\textquotesingle{}}, }
+\item[{}]{alist = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a87c99a26e79147d5025cfdfda26dc57d}{}\label{globaltools_8py_file_a87c99a26e79147d5025cfdfda26dc57d}
+
+
+This tiny functions just count the occurrences of an element in a list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & the element that shall be checked in the list \\
+\hline
+{\em alist} & the list where the element shall be counted in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+counter counted occurrences of the element in the list 
+\end{DoxyReturn}
+\index{globaltools.\+py@{globaltools.\+py}!find\+Loops@{find\+Loops}}
+\index{find\+Loops@{find\+Loops}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{find\+Loops(struc=\lcurly{}\rcurly{}, elem=\textquotesingle{}\textquotesingle{}, way=[], result=[])}{findLoops(struc=\{\}, elem='', way=[], result=[])}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+find\+Loops (
+\begin{DoxyParamCaption}
+\item[{}]{struc = {\ttfamily \{\}}, }
+\item[{}]{elem = {\ttfamily \textquotesingle{}\textquotesingle{}}, }
+\item[{}]{way = {\ttfamily \mbox{[}\mbox{]}}, }
+\item[{}]{result = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a388d233340dff99be67f0afc03953992}{}\label{globaltools_8py_file_a388d233340dff99be67f0afc03953992}
+
+
+This function looks for loops in a tree structure. 
+
+The given dictionary must have the following structure dic\mbox{[}struc\+\_\+item\mbox{]}\mbox{[}\textquotesingle{}subelem\textquotesingle{}\mbox{]}. It runs recusively through the structure tree. Further it will change the global variable {\itshape loops}. 
+\begin{DoxyParams}{Parameters}
+{\em struc} & tree in a dictionary which shall be searched for loop structures. \\
+\hline
+{\em elem} & element of the structure tree where to start the search for loops. \\
+\hline
+{\em way} & The path which were actually run through in the tree. \\
+\hline
+{\em result} & contains loops as a list of tuples. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000001}{Bug}]this function finds sometimes loops where no loops are... it seems to concern multiple links to leaves... \end{DoxyRefDesc}
+\index{globaltools.\+py@{globaltools.\+py}!get\+Last@{get\+Last}}
+\index{get\+Last@{get\+Last}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{get\+Last(string=""/"", sep=\textquotesingle{}/\textquotesingle{})}{getLast(string="/", sep='/')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+get\+Last (
+\begin{DoxyParamCaption}
+\item[{}]{string = {\ttfamily \char`\"{}/\char`\"{}}, }
+\item[{}]{sep = {\ttfamily \textquotesingle{}/\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a26eac5d473aed10e2965d37099bf9e5e}{}\label{globaltools_8py_file_a26eac5d473aed10e2965d37099bf9e5e}
+
+
+This function gives the last element of a list stored in a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & where the list is stored. \\
+\hline
+{\em sep} & seperator of the list elements. E.\+g., \textquotesingle{}/\textquotesingle{} or \textquotesingle{},\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+last element of the list. 
+\end{DoxyReturn}
+\index{globaltools.\+py@{globaltools.\+py}!list2str@{list2str}}
+\index{list2str@{list2str}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{list2str(array=[])}{list2str(array=[])}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+list2str (
+\begin{DoxyParamCaption}
+\item[{}]{array = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a748b3ad515bb5f8281892b7f82a7ff4b}{}\label{globaltools_8py_file_a748b3ad515bb5f8281892b7f82a7ff4b}
+
+
+This function transforms a list/tuple into a string where the elements are separated by spaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & List/tupel to be transformed to string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em result} & string which holds the elements space separated \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!make\+Key\+List@{make\+Key\+List}}
+\index{make\+Key\+List@{make\+Key\+List}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{make\+Key\+List(dic=\lcurly{}\rcurly{}, klist=[])}{makeKeyList(dic=\{\}, klist=[])}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+make\+Key\+List (
+\begin{DoxyParamCaption}
+\item[{}]{dic = {\ttfamily \{\}}, }
+\item[{}]{klist = {\ttfamily \mbox{[}\mbox{]}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a4eea1f0cbce0bb32cd15f2f6847a40b5}{}\label{globaltools_8py_file_a4eea1f0cbce0bb32cd15f2f6847a40b5}
+
+
+This function simply extracts/compares the key index of a given dictionary with a list. 
+
+If the list is lacking entries they will be added from the key index. Finally, the list will be returned and compared with the index list. 
+\begin{DoxyParams}{Parameters}
+{\em dic} & dictionary to check \\
+\hline
+{\em klist} & keylist which shall be compared with the dictionary index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+klist generated/completed list 
+
+fit Boolean whether index and key list are the same. 
+\end{DoxyReturn}
+\index{globaltools.\+py@{globaltools.\+py}!read\+File@{read\+File}}
+\index{read\+File@{read\+File}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{read\+File(path=\textquotesingle{}./\textquotesingle{}, file\+\_\+name=\+None, mode=\textquotesingle{}r\textquotesingle{})}{readFile(path='./', file_name=None, mode='r')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+read\+File (
+\begin{DoxyParamCaption}
+\item[{}]{path = {\ttfamily \textquotesingle{}./\textquotesingle{}}, }
+\item[{}]{file\+\_\+name = {\ttfamily None}, }
+\item[{}]{mode = {\ttfamily \textquotesingle{}r\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a3f1400c5d3ed1fc184f85581b8aedc1a}{}\label{globaltools_8py_file_a3f1400c5d3ed1fc184f85581b8aedc1a}
+
+
+This function reads a file and returns its content. 
+
+This function is designed to read files from a file system. It knows two modes of reading\+: text and binary mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & path to the file \\
+\hline
+{\em file\+\_\+name} & name of the file \\
+\hline
+{\em mode} & reading mode of the file\+: r = text; rb = binary \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error message or content of the file 
+\end{DoxyReturn}
+\index{globaltools.\+py@{globaltools.\+py}!sort\+Index@{sort\+Index}}
+\index{sort\+Index@{sort\+Index}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{sort\+Index(dic=\lcurly{}\rcurly{})}{sortIndex(dic=\{\})}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+sort\+Index (
+\begin{DoxyParamCaption}
+\item[{}]{dic = {\ttfamily \{\}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a65b43889cc476f29c33c6e9f22b368a7}{}\label{globaltools_8py_file_a65b43889cc476f29c33c6e9f22b368a7}
+
+
+This function is a little helper when sorting a dictionary. 
+
+This function gets a dictionary and gives back the dictionary index as a sorted array. With that the content of a dictionary in Python can be shown in alphabetical order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dic} & a dictionary whose index shall be sorted \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em index} & an array with the sorted index of the given dictionary dict \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!tstr2list@{tstr2list}}
+\index{tstr2list@{tstr2list}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{tstr2list(string=\textquotesingle{}(1, 2, 3)\textquotesingle{})}{tstr2list(string='(1, 2, 3)')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+tstr2list (
+\begin{DoxyParamCaption}
+\item[{}]{string = {\ttfamily \textquotesingle{}(1,2,3)\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_a5b344d6078286fff96c81ccfdb524aa6}{}\label{globaltools_8py_file_a5b344d6078286fff96c81ccfdb524aa6}
+
+
+This function transforms a string which \textquotesingle{}looks like a tuple\textquotesingle{} into a list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & input \textquotesingle{}tuple\textquotesingle{} string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em result} & list of \textquotesingle{}tuple\textquotesingle{} string elements \\
+\hline
+\end{DoxyRetVals}
+\index{globaltools.\+py@{globaltools.\+py}!write\+File@{write\+File}}
+\index{write\+File@{write\+File}!globaltools.\+py@{globaltools.\+py}}
+\subsubsection[{\texorpdfstring{write\+File(path=\textquotesingle{}./\textquotesingle{}, file\+\_\+name=\textquotesingle{}output\textquotesingle{}, data=\+None, mode=\textquotesingle{}w\textquotesingle{})}{writeFile(path='./', file_name='output', data=None, mode='w')}}]{\setlength{\rightskip}{0pt plus 5cm}def rpgtoolbox.\+globaltools.\+write\+File (
+\begin{DoxyParamCaption}
+\item[{}]{path = {\ttfamily \textquotesingle{}./\textquotesingle{}}, }
+\item[{}]{file\+\_\+name = {\ttfamily \textquotesingle{}output\textquotesingle{}}, }
+\item[{}]{data = {\ttfamily None}, }
+\item[{}]{mode = {\ttfamily \textquotesingle{}w\textquotesingle{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{globaltools_8py_file_ad297bc6fb6b7b3a45a467248ce2ba004}{}\label{globaltools_8py_file_ad297bc6fb6b7b3a45a467248ce2ba004}
+
+
+This function simply (over)writes a file with given data. 
+
+This function is designed to dump some data into a file. It is possible to write binary files or text files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & path to file \\
+\hline
+{\em file\+\_\+name} & name of the file to be saved (default\+: output) \\
+\hline
+{\em data} & data to be saved. The accepted data format are arrays or strings \\
+\hline
+{\em mode} & write mode of the file. Default is \textquotesingle{}w\textquotesingle{} --$>$ text file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error message or ok state 
+\end{DoxyReturn}
