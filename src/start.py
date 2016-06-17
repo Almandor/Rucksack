@@ -17,6 +17,8 @@ Rucksackverwaltung mit Shopsystem
 import Tkinter as tk
 import os.path
 import time
+from Tkconstants import BOTH, SINGLE
+import ttk as ttk
 
 class Mainscreen(object):
 
@@ -53,7 +55,7 @@ class Mainscreen(object):
 
         self.master.destroy()
         root = tk.Tk()
-        app = New_Group(root)
+        app = group(root)
         center(root)
         root.mainloop()
 
@@ -75,9 +77,9 @@ class Mainscreen(object):
         print("WIP!")
 
 
-class New_Group(object):
+class group(object):
     '''
-    Presents a Window where you can create the Group
+    Presents a Window where you can create or edit the Group
     Very work in progress
 
     '''
@@ -85,7 +87,7 @@ class New_Group(object):
         self.master = master
         self.frame_main = tk.Frame(self.master, height = 600, width = 800)
         self.frame_main.grid(row = 0, column = 0)
-        self.label1 = tk.Label(self.frame_main, text = "Rucksack und Inventar Management", font = ("Helvetica", 16))
+        self.label1 = tk.Label(self.frame_main, text = "Rucksack und Inventar Management - Gruppe anlegen", font = ("Helvetica", 16))
         self.label1.grid(row = 0, column = 0, padx = 10, columnspan = 4)
         self.label_name = tk.Label(self.frame_main, text = "Name", font = ("Times", 8))
         self.label_name.grid(row = 1, column = 0, pady = (10, 2))
@@ -104,11 +106,39 @@ class New_Group(object):
         self.entry_player = tk.Entry(self.frame_main)
         self.entry_player.grid(row = 2, column = 3, padx = (0, 10))
         self.button_entry = tk.Button(self.frame_main, text = "+", command = self.__add_data)
-        self.button_entry.grid(row = 2, column = 4, padx = 10)
+        self.button_entry.grid(row = 2, column = 4)
+        self.button_delete = tk.Button(self.frame_main, text = "-", command = self.__remove_data)
+        self.button_delete.grid(row = 2, column = 5, padx = (0, 10))        
+
+        self.tree = ttk.Treeview(self.frame_main)
+        self.tree.grid(row = 3, column = 0, columnspan = 4, sticky="WENS", padx = 10)
+
+        self.button_continue = tk.Button(self.frame_main, text="Weiter", command=self.__add_data())
+        self.button_continue.grid(row = 4, column = 0, pady = 10, padx = 10, columnspan = 4, sticky="WENS")
+        self.button_back = tk.Button(self.frame_main, text="back", command=self.__back)
+        self.button_back.grid(row = 4, column = 4, pady = 10, padx = 10)
+
 
     def __add_data(self):
-        print("WIP")
+        name = self.entry_name.get()
+        weight = self.entry_weight.get()
+        gold = self.entry_gold.get()
+        player = self.entry_player.get()
+        if name <> "":
+            self.list_name.insert(tk.END, name)
+            self.list_weight.insert(tk.END, weight)
+            self.list_gold.insert(tk.END, gold)
+            self.list_player.insert(tk.END, player)
+    
+    def __remove_data(self):
+        self.entry_name.delete(0, tk.END)
+        self.entry_weight.delete(0, tk.END)
+        self.entry_gold.delete(0, tk.END)
+        self.entry_player.delete(0, tk.END)
 
+    def __back(self):
+        self.master.destroy()
+        main()
 
 
 
