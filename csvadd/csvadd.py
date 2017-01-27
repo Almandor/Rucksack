@@ -5,6 +5,7 @@ import Tkinter as tk
 import argparse
 import time
 import csv
+import geometry
 
 # --- classes ---
 
@@ -12,6 +13,7 @@ class Application(tk.Frame):
 
     def __init__(self, headers, filename, last_line, master=None):
         tk.Frame.__init__(self, master)
+        center(self)
         self.grid()
         self.filename = filename
         lastentry = self.createWidgets(self.filename, headers, last_line)
@@ -108,12 +110,23 @@ def writedata(filename, entryfield, lastentry):
             outfiledata.append(lastentry[i].get())
         #outfiledata = outfiledata[2:]
         writer.writerow(outfiledata)
+        
+def center(toplevel):
+    toplevel.update_idletasks()
+    w = toplevel.winfo_screenwidth()
+    h = toplevel.winfo_screenheight()
+    size = tuple(int(_) for _ in toplevel.geometry().split('+')[0].split('x'))
+    x = w / 2 - size[0] / 2
+    if w >= 2000:
+        x = x / 2
+    y = h / 2 - size[1] / 2
+    toplevel.geometry("%dx%d+%d+%d" % (size + (x, y)))
 
 
 # --- main ---
 
 parser = argparse.ArgumentParser()
-parser.add_argument('filename.csv', nargs=1, help="file to parse")
+parser.add_argument('filename', metavar='csv', nargs=1, help="file to parse")
 args = parser.parse_args()
 
 filename = args.filename[0]
