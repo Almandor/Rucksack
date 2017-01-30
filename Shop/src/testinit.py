@@ -11,19 +11,25 @@ Enthält den einkaufenden Charakter
 \author Christian Wunderlich
 \email cw@almandor.de
 
-\todo Modul: alles
+\todo Modul: Bau der Containerliste
+\todo Modul: Uebergabe der Daten an shop.py
 '''
 
 import Tkinter as tk
 from Tkconstants import BOTH, SINGLE
 import ttk as ttk
+from Tkinter import StringVar, IntVar
 
 class Startwindow(object):
     '''
     Baut Fenster um den Shop zu starten.
     Test-Charakterdaten werden angezeigt und können angepasst werden.
     '''
-    def __init__(self, master):
+    def __init__(self, master):    
+        
+        self.check1 = IntVar()               
+                             
+                             # Eingabefelder für Testdaten werden gebaut
         self.master = master
         self.frame_main = tk.Frame(self.master, height = 200, width = 600)
         self.frame_main.grid(row = 0, column = 0)
@@ -58,28 +64,30 @@ class Startwindow(object):
         self.labelcontainer = tk.Label(self.frame_main, text = "Prefilled Container: ")
         self.labelcontainer.grid(row = 5,column = 0, sticky=tk.W, padx=(10,0), pady=(5,0))
 
-        self.checkcontainer = tk.Checkbutton(self.frame_main)
+        self.checkcontainer = ttk.Checkbutton(self.frame_main, variable = self.check1)
         self.checkcontainer.grid(row = 5, column = 1, padx=(0,10), pady=(5,0), sticky=tk.W)
 
-        self.button_start = tk.Button(self.frame_main, text = "Start", command = self.begin(), height = 3, width = 30, foreground='green')
+        self.button_start = tk.Button(self.frame_main, text = "Start", command = lambda: self.begin(self.entryname.get(), self.entrygold.get(),self.entryweight.get(),self.check1.get()), height = 3, width = 30, foreground='green')
         self.button_start.grid(row = 6, column = 0, pady = 10)   
 
         self.button_quit = tk.Button(self.frame_main, text = "Beenden", command = master.destroy, height = 3, width = 30, foreground='red')
         self.button_quit.grid(row = 6, column = 1, pady = 10)
         
-        self.prefill(self.entryname, self.entrygold,self.entryweight,self.checkcontainer)
+        self.prefill(self.entryname, self.entrygold,self.entryweight,self.check1)
         
-    def prefill(self,name,gold,weight,container):
+    def prefill(self,name,gold,weight,container):  # Füllt die Eingabefelder mit Defaultdaten
         name.insert(0, "Max Tester")
         gold.insert(0, 100000)
         weight.insert(0, 120)
            
     
-    def begin(self):
-        pass
+    def begin(self,name,gold,weight,check):
+        if check == True:
+            container = []
+        else:
+            container = []
 
-
-def center(toplevel):
+def center(toplevel):           # Zentriert übergebenes Fenster
     toplevel.update_idletasks()
     w = toplevel.winfo_screenwidth()
     h = toplevel.winfo_screenheight()
@@ -102,4 +110,5 @@ if __name__ == '__main__':
     gold = "0"
     maxweight = ""
     container = []
+    contvar = StringVar
     main()
