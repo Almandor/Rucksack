@@ -1,0 +1,9 @@
+Gegenstandsinformationen:
+Größte Dimension (z.B. Länge)
+Gewicht
+
+Containerinformationen:
+Gößte Dimension (z.B. Länge)
+Gewicht
+Maximale Tragekapazität
+Maximale Dimension für Inhalt
