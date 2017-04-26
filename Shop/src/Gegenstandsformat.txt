@@ -7,3 +7,40 @@ Gößte Dimension (z.B. Länge)
 Gewicht
 Maximale Tragekapazität
 Maximale Dimension für Inhalt
+
+
+Waffen / Weapons:
+		Hände / Hands
+				Typ / Type
+						Name
+								Abkürzung / Abbr.
+								Preis / Cost
+								Herstellungszeitraum / Prod. Time
+								Gewicht / Weight
+								Länge / Length
+								Bruchfaktor / B#s
+								Stärke / Str.
+								Patzer / Fumble
+								Anmerkungen / Notes
+								
+Rüstung / Armor
+		Rüstungswert / AT
+		Preis / Cost
+		Herstellungszeitraum / Prod. Time
+		Gewicht / Weight
+		Länge / Length
+		Anmerkungen / Notes
+
+		
+Kräuter / Herbs
+		Typ / Type
+				Form
+					Prep
+						Name
+							Codes
+							Cost
+							AF (Addiction Factor)
+							Effect
+							Notes
+
+Poison

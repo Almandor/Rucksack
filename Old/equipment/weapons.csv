@@ -1,0 +1,4 @@
+Name,Cost Number,Cost Type,Type,Prod. Time Number,Prod. Time Type,Weight lower,Weight higher,B#s lower,B#s higher,Str. lower,Str. higher,Str. Type,Fumble lower,Fumble higher,Lenght,Notes,Abbr.
+Axe,2,s,1he,1,day,4,6,1,7,56,64,w,1,4,50,-,ax
+Bastard Sword,20,s,1he/2he,45,day,4,6,1/1,4/5,68,82,,1/1,4/5,120,-,bd
+Battle Axe,13,s,2he,2,day,5,9,1/1,8,56,75,w,1/1,5,80,-,ba

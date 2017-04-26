@@ -1,0 +1,10 @@
+/home/chris/workspace/Rucksack/Shop/src/createfiles.py:19: warning: the name `cratefiles.py' supplied as the second argument in the \file statement is not an input file
+/home/chris/workspace/Rucksack/Shop/src/shop.py:20: warning: Found unknown command `\email'
+/home/chris/workspace/Rucksack/Shop/src/testinit.py:21: warning: Found unknown command `\email'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/chris/workspace/Rucksack/Shop/doc/latex/classtestinit_1_1Startwindow__coll__graph.dot" -Tpdf -o "/home/chris/workspace/Rucksack/Shop/doc/latex/classtestinit_1_1Startwindow__coll__graph.pdf"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/chris/workspace/Rucksack/Shop/doc/html/classtestinit_1_1Startwindow__coll__graph.dot" -Tpng -o "/home/chris/workspace/Rucksack/Shop/doc/html/classtestinit_1_1Startwindow__coll__graph.png" -Tcmapx -o "/home/chris/workspace/Rucksack/Shop/doc/html/classtestinit_1_1Startwindow__coll__graph.map"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/chris/workspace/Rucksack/Shop/doc/html/graph_legend.dot" -Tpng -o "/home/chris/workspace/Rucksack/Shop/doc/html/graph_legend.png"'
+error: problems opening map file /home/chris/workspace/Rucksack/Shop/doc/html/classtestinit_1_1Startwindow__coll__graph.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problem writing FIG 0 figure!

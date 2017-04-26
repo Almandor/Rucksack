@@ -1,0 +1,6 @@
+digraph "testinit.Startwindow"
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  Node1 [label="{testinit.Startwindow\n|+ button_quit\l+ button_start\l+ check1\l+ checkcontainer\l+ entrygold\l+ entryname\l+ entryweight\l+ frame_main\l+ frameplaceholder\l+ label1\l+ labelcontainer\l+ labelgold\l+ labelname\l+ labelweight\l+ master\l|+ begin()\l+ prefill()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

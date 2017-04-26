@@ -5,7 +5,7 @@ import Tkinter as tk
 import argparse
 import time
 import csv
-import geometry
+# import geometry
 
 # --- classes ---
 

@@ -1,0 +1,25 @@
+\hypertarget{classtestinit_1_1Startwindow}{}\section{testinit.\+Startwindow}
+\label{classtestinit_1_1Startwindow}\index{testinit.\+Startwindow@{testinit.\+Startwindow}}
+
+
+Baut Fenster um den Shop zu starten.  
+
+
+
+
+Inherits object.
+
+
+
+Collaboration diagram for testinit.\+Startwindow\+:
+% FIG 0
+
+
+\subsection{Detailed Description}
+Baut Fenster um den Shop zu starten. 
+
+Test-\/\+Charakterdaten werden angezeigt und können angepasst werden. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{testinit_8py}{testinit.\+py}\end{DoxyCompactItemize}
