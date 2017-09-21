@@ -23,6 +23,7 @@ def readConfig(configfile):
 def listCategories(dataDirectory):
     print(os.listdir(dataDirectory))
 
+pass
 
 readConfig(configfile)
 #===============================================================================
