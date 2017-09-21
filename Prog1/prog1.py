@@ -1,6 +1,7 @@
 from Tkinter import *
 import ConfigParser
 import os
+import sys
 
 configfile = 'prog1.cfg'
 
@@ -21,11 +22,26 @@ def readConfig(configfile):
     return(dataDirectory)
 
 def listCategories(dataDirectory):
-    print(os.listdir(dataDirectory))
+    category = []
+    try:
+        dirContents = os.listdir(dataDirectory)
+    except:
+        print("No Data found. Abort")
+        sys.exit()
+        
+    if dirContents == []:
+        print("Datadirectory is empty. Abort")
+        sys.exit()
+    else:
+        for i in dirContents:
+            if i.endswith(".csv"):
+                category.append(i[3:-4])
+        
+        return(category)
 
-pass
+    
 
-readConfig(configfile)
+listCategories(readConfig(configfile))
 #===============================================================================
 # root = Tk()
 # 
