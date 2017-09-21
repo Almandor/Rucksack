@@ -4,7 +4,7 @@ import os
 import sys
 import csv
 
-configfile = 'prog1.cfg'
+configfile = 'backpack.cfg'
 
 def readConfig(configfile):
     # Checking for Config File
