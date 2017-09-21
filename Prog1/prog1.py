@@ -2,6 +2,7 @@ from Tkinter import *
 import ConfigParser
 import os
 import sys
+import csv
 
 configfile = 'prog1.cfg'
 
@@ -35,13 +36,16 @@ def listCategories(dataDirectory):
     else:
         for i in dirContents:
             if i.endswith(".csv"):
-                category.append(i[3:-4])
+                category.append(i[:-4])
         
         return(category)
 
     
 
-listCategories(readConfig(configfile))
+categories = listCategories(readConfig(configfile))
+
+for i in categories:
+    print(i)
 #===============================================================================
 # root = Tk()
 # 
