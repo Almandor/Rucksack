@@ -40,12 +40,23 @@ def listCategories(dataDirectory):
         
         return(category)
 
-    
+def getTables(configfile):
+    dataDirectory = readConfig(configfile)
+    categories = listCategories(dataDirectory)
+    tables = []
+    for i in categories:
+        filename = dataDirectory + "/" + i + ".csv"
+        with open(filename) as f:
+            a = [{k: int(v) for k, v in row.items()}
+                 for row in csv.DictReader(f, skipinitialspace=True)]
+        tables.append(i,a)
+    return(tables)
 
-categories = listCategories(readConfig(configfile))
 
-for i in categories:
-    print(i)
+
+
+
+tables = getTables(configfile)
 #===============================================================================
 # root = Tk()
 # 
