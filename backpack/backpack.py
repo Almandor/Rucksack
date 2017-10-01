@@ -3,6 +3,7 @@ import ConfigParser
 import os
 import sys
 import csv
+from pprint import pprint
 
 configfile = 'backpack.cfg'
 
@@ -23,6 +24,7 @@ def readConfig(configfile):
     return(dataDirectory)
 
 def listCategories(dataDirectory):
+    # Loading Filenames in Data Directory as Categories
     category = []
     try:
         dirContents = os.listdir(dataDirectory)
@@ -41,15 +43,19 @@ def listCategories(dataDirectory):
         return(category)
 
 def getTables(configfile):
+    # Fill tables-dictionary with Contents of Data files
     dataDirectory = readConfig(configfile)
     categories = listCategories(dataDirectory)
-    tables = []
+    tables = {}
     for i in categories:
+        entries = []
         filename = dataDirectory + "/" + i + ".csv"
-        with open(filename) as f:
-            a = [{k: int(v) for k, v in row.items()}
-                 for row in csv.DictReader(f, skipinitialspace=True)]
-        tables.append(i,a)
+        with open(filename) as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                entries.append(row)
+            csvfile.close()
+        tables[i] = entries
     return(tables)
 
 
@@ -57,6 +63,7 @@ def getTables(configfile):
 
 
 tables = getTables(configfile)
+pprint(tables)
 #===============================================================================
 # root = Tk()
 # 
