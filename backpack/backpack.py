@@ -1,9 +1,37 @@
+#!/usr/bin/env python
+
+'''
+\package Rucksack
+\file backpack.py
+
+\brief first installment of a backpack handling tool
+
+The program is intended to supplement players of P&P games to handle their backpack.
+
+Done:
+- Reading Config file
+- Importing itemcategories from CSV-filenames
+- Importing items from CSV files into one dictionary
+
+\author Christian Wunderlich
+\date (c) 2017
+\version 0.0.1 alpha
+\email cwunderlich@almandor.de
+\todo Todo list
+- userinterface
+- usermanagment
+- inventorymanagement
+- export
+'''
+
 from Tkinter import *
 import ConfigParser
 import os
 import sys
 import csv
 from pprint import pprint
+import src.modules
+
 
 configfile = 'backpack.cfg'
 
