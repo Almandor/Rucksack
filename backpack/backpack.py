@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
+
 '''
 \package Rucksack
 \file backpack.py
@@ -21,6 +22,8 @@ Done:
 \email cwunderlich@almandor.de
 \todo Todo list
 - userinterface
+- usermanagment
+- inventorymanagement
 - export
 '''
 
@@ -31,6 +34,8 @@ import sys
 import csv
 import random
 from pprint import pprint
+import src.modules
+
 
 configfile = 'backpack.cfg'
 
