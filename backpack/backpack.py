@@ -1,8 +1,35 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+'''
+\package Rucksack
+\file backpack.py
+
+\brief first installment of a backpack handling tool
+
+The program is intended to supplement players of P&P games to handle their backpack.
+
+Done:
+- Reading Config file
+- Importing itemcategories from CSV-filenames
+- Importing items from CSV files into one dictionary
+
+\author Christian Wunderlich
+\date (c) 2017
+\version 0.0.1 alpha
+\email cwunderlich@almandor.de
+\todo Todo list
+- userinterface
+- export
+'''
+
 from Tkinter import *
 import ConfigParser
 import os
 import sys
 import csv
+import random
 from pprint import pprint
 
 configfile = 'backpack.cfg'
@@ -13,7 +40,7 @@ def readConfig(configfile):
         config = ConfigParser.ConfigParser()
         config.read(configfile)
         try:
-            dataDirectory = config.get("1",'DataDirectory')
+            dataDirectory = config.get("global",'DataDirectory')
         except:
             print("DataDirectory not configured. Using defaults")
             dataDirectory = "./Data"
@@ -59,11 +86,48 @@ def getTables(configfile):
     return(tables)
 
 
+def fillTestInventory(shop):
+    """
+    Adds three random Items from shop to player inventoy
+    """
+    print("fillTestInventory -- not implemented yet")
+    numbers = 0
+    select = 0
+     
+    for i in range(0,3):
+        select = random.randint(0,len(shop)-1)
+        # print(shop[shop.keys()[select]])
+        print(shop.keys()[select])
+     
+ 
+def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
+    '''
+    Loads Characters from file
+     
+    For mock purpose it fills the characters manually
+    '''
+    dummyDic = {}
 
-
-
+    for key in tables.keys():
+        dummyDic[key] = []
+    
+    # Hier dummyDic mit den Gegenständen füllen
+    
+    for key in characters.keys():
+        characters[key] = dummyDic
+    
+    print("LoadCharacters")
+  
+# Variables
+  
 tables = getTables(configfile)
+print tables
 pprint(tables)
+characters = loadCharacters(tables)
+
+
+
+fillTestInventory(tables)
 #===============================================================================
 # root = Tk()
 # 
