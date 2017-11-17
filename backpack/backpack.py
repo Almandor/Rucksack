@@ -91,7 +91,7 @@ def getTables(configfile):
     return(tables)
 
 
-def fillTestInventory(shop):
+def fillTestInventory(tables):
     """
     Adds three random Items from shop to player inventoy
     """
@@ -100,9 +100,10 @@ def fillTestInventory(shop):
     select = 0
      
     for i in range(0,3):
-        select = random.randint(0,len(shop)-1)
+        select = random.randint(0,len(tables)-1)
         # print(shop[shop.keys()[select]])
-        print(shop.keys()[select])
+        print tables['001_Weapons'] #Wie greife ich hier auf das n. Element drauf zu? 
+        
      
  
 def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
@@ -122,12 +123,11 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
         characters[key] = dummyDic
     
     print("LoadCharacters")
+    print characters
   
 # Variables
   
 tables = getTables(configfile)
-print tables
-pprint(tables)
 characters = loadCharacters(tables)
 
 
