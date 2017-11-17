@@ -102,7 +102,7 @@ def fillTestInventory(tables):
     for i in range(0,3):
         select = random.randint(0,len(tables)-1)
         # print(shop[shop.keys()[select]])
-        print tables['001_Weapons'] #Wie greife ich hier auf das n. Element drauf zu? 
+        print tables['001_Weapons'][select]['Item'] # Prüft #Random auf Liste umbauen
         
      
  
