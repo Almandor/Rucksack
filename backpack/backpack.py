@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from unicodedata import category
 
 
 
@@ -34,7 +35,7 @@ import sys
 import csv
 import random
 from pprint import pprint
-import src.modules
+# import src.modules
 
 
 configfile = 'backpack.cfg'
@@ -93,16 +94,21 @@ def getTables(configfile):
 
 def fillTestInventory(tables):
     """
-    Adds three random Items from shop to player inventoy
+    Adds three random Items from shop to player inventory
     """
-    print("fillTestInventory -- not implemented yet")
+    print("fillTestInventory -- Working on it")
     numbers = 0
-    select = 0
-     
+    selectcategory = 0
+    selectitem = 0
+
     for i in range(0,3):
-        select = random.randint(0,len(tables)-1)
-        # print(shop[shop.keys()[select]])
-        print tables['001_Weapons'][select]['Item'] # Prüft #Random auf Liste umbauen
+        selectcategory = random.randint(0,len(tables)-1)
+        print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
+        items = tables[list(tables)[selectcategory]]
+        selectitem = random.randint(0,len(items)-1)
+        print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
+        print items[selectitem]['Item']
+        #print items[list(items)[category]][selectitem]['Item']        
         
      
  
