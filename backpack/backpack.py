@@ -92,23 +92,27 @@ def getTables(configfile):
     return(tables)
 
 
-def fillTestInventory(tables):
+def fillTestInventory(tables,characters):
     """
-    Adds three random Items from shop to player inventory
+    Adds three random Items from shop to player inventories
     """
     print("fillTestInventory -- Working on it")
     numbers = 0
     selectcategory = 0
     selectitem = 0
-
-    for i in range(0,3):
-        selectcategory = random.randint(0,len(tables)-1)
-        print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
-        items = tables[list(tables)[selectcategory]]
-        selectitem = random.randint(0,len(items)-1)
-        print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
-        print items[selectitem]['Item']
-        #print items[list(items)[category]][selectitem]['Item']        
+    
+    for character in characters:
+        # ToDo: Add the items to the character instead of printing em.
+        print(character)
+        for j in range(0,3):
+            selectcategory = random.randint(0,len(tables)-1)
+            print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
+            items = tables[list(tables)[selectcategory]]
+            selectitem = random.randint(0,len(items)-1)
+            print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
+            print items[selectitem]['Item']
+            #print items[list(items)[category]][selectitem]['Item']      
+              
         
      
  
@@ -130,6 +134,7 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
     
     print("LoadCharacters")
     print characters
+    return characters
   
 # Variables
   
@@ -138,7 +143,7 @@ characters = loadCharacters(tables)
 
 
 
-fillTestInventory(tables)
+fillTestInventory(tables,characters)
 #===============================================================================
 # root = Tk()
 # 
