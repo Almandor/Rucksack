@@ -126,19 +126,19 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
     # Hier dummyDic mit den Gegenständen füllen
     
     for key in characters.keys():
-        characters[key] = dummyDic
+        print("Filling Character " + key)
+        characters[key] = fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
     
     print("LoadCharacters")
-    print characters
+    return characters
   
 # Variables
   
 tables = getTables(configfile)
 characters = loadCharacters(tables)
 
+print characters
 
-
-fillTestInventory(tables)
 #===============================================================================
 # root = Tk()
 # 
