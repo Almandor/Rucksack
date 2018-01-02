@@ -95,6 +95,9 @@ def getTables(configfile):
 def fillTestInventory(tables):
     """
     Adds three random Items from shop to player inventory
+    
+    \todo Ergebnis in eine Liste schreiben und zurückgeben.
+    
     """
     print("fillTestInventory -- Working on it")
     numbers = 0
