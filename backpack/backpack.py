@@ -94,14 +94,11 @@ def getTables(configfile):
 
 def fillTestInventory(tables,characters):
     """
-<<<<<<< HEAD
-    Adds three random Items from shop to player inventories
-=======
+
     Adds three random Items from shop to player inventory
     
     \todo Ergebnis in eine Liste schreiben und zurückgeben.
     
->>>>>>> origin
     """
     print("fillTestInventory -- Working on it")
     numbers = 0
@@ -141,10 +138,7 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
         characters[key] = fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
     
     print("LoadCharacters")
-<<<<<<< HEAD
-    print characters
-=======
->>>>>>> origin
+
     return characters
   
 # Variables
@@ -154,11 +148,8 @@ characters = loadCharacters(tables)
 
 print characters
 
-<<<<<<< HEAD
-
 fillTestInventory(tables,characters)
-=======
->>>>>>> origin
+
 #===============================================================================
 # root = Tk()
 # 
