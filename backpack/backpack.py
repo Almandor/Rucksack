@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from unicodedata import category
-
-
 
 '''
-\package Rucksack
+\package backpack
 \file backpack.py
 
 \brief first installment of a backpack handling tool
@@ -35,13 +32,20 @@ import sys
 import csv
 import random
 from pprint import pprint
+# from unicodedata import category
+
 # import src.modules
 
 
-configfile = 'backpack.cfg'
-
-def readConfig(configfile):
-    # Checking for Config File
+def readConfig(configfile = 'backpack.cfg'):
+    '''
+    
+    Checking for Config File
+    \param configfile Name of the config file.
+    \retval dataDirectory Directory where the data files are located
+        Returns ./Data if no directory found in config file.
+    
+    '''
     if os.path.isfile(configfile):
         config = ConfigParser.ConfigParser()
         config.read(configfile)
@@ -57,7 +61,13 @@ def readConfig(configfile):
     return(dataDirectory)
 
 def listCategories(dataDirectory):
-    # Loading Filenames in Data Directory as Categories
+    '''
+    
+    Loading Filenames in Data Directory as Categories
+    \param dataDirectory Directory where the data files are located
+    \retval category list of Item categories
+    
+    '''
     category = []
     try:
         dirContents = os.listdir(dataDirectory)
@@ -76,30 +86,42 @@ def listCategories(dataDirectory):
         return(category)
 
 def getTables(configfile):
-    # Fill tables-dictionary with Contents of Data files
+    '''
+    
+    Fill tables-dictionary with Contents of Data files
+    \param configfile Name of the config file.
+    \retval tables Content of temtables as dictionary
+    
+    '''
     dataDirectory = readConfig(configfile)
     categories = listCategories(dataDirectory)
     tables = {}
-    for i in categories:
+    for cat in categories:
         entries = []
-        filename = dataDirectory + "/" + i + ".csv"
+        filename = dataDirectory + "/" + cat + ".csv"
         with open(filename) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 entries.append(row)
             csvfile.close()
-        tables[i] = entries
+        tables[cat] = entries
     return(tables)
 
 
 def fillTestInventory(tables,characters):
-    """
+    '''
 
     Adds three random Items from shop to player inventory
     
+    \param tables Content of temtables as dictionary
+    \param characters List of characters
+
+
+    ----
     \todo Ergebnis in eine Liste schreiben und zurückgeben.
     
-    """
+    
+    '''
     print("fillTestInventory -- Working on it")
     numbers = 0
     selectcategory = 0
@@ -140,15 +162,19 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
     print("LoadCharacters")
 
     return characters
-  
-# Variables
-  
-tables = getTables(configfile)
-characters = loadCharacters(tables)
 
-print characters
 
-fillTestInventory(tables,characters)
+if __name__ == '__main__':
+  
+    # Variables
+    configfile = 'backpack.cfg'
+ 
+    tables = getTables(configfile)
+    characters = loadCharacters(tables)
+    
+    print characters
+    
+    fillTestInventory(tables,characters)
 
 #===============================================================================
 # root = Tk()
