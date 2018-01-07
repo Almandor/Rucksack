@@ -108,17 +108,17 @@ def getTables(configfile):
     return(tables)
 
 
-def fillTestInventory(tables,characters):
+def fillTestInventory(tables):
     '''
 
     Adds three random Items from shop to player inventory
-    
+    key
     \param tables Content of temtables as dictionary
     \param characters List of characters
-
+    \retval inventory Random dictionary Key = item category, Value = list of items
+    
 
     ----
-    \todo Ergebnis in eine Liste schreiben und zurückgeben.
     
     
     '''
@@ -126,21 +126,21 @@ def fillTestInventory(tables,characters):
     numbers = 0
     selectcategory = 0
     selectitem = 0
+    inventory = {}
     
-    for character in characters:
-        # ToDo: Add the items to the character instead of printing em.
-        print(character)
-        for j in range(0,3):
-            selectcategory = random.randint(0,len(tables)-1)
-            print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
-            items = tables[list(tables)[selectcategory]]
-            selectitem = random.randint(0,len(items)-1)
-            print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
-            print items[selectitem]['Item']
-            #print items[list(items)[category]][selectitem]['Item']      
-              
-        
-     
+    for j in range(0,3):
+        selectcategory = random.randint(0,len(tables)-1)
+        if tables.keys()[selectcategory] not in inventory.keys():
+            inventory[tables.keys()[selectcategory]] = []
+        print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
+        items = tables[list(tables)[selectcategory]]
+        selectitem = random.randint(0,len(items)-1)
+        print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
+        print items[selectitem]['Item']
+        #print items[list(items)[category]][selectitem]['Item']      
+        inventory[tables.keys()[selectcategory]].append(items[selectitem])     
+        pprint(inventory)
+    return inventory
  
 def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
     '''
@@ -155,9 +155,7 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
     
     # Hier dummyDic mit den Gegenständen füllen
     
-    for key in characters.keys():
-        print("Filling Character " + key)
-        characters[key] = fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
+
     
     print("LoadCharacters")
 
@@ -172,9 +170,14 @@ if __name__ == '__main__':
     tables = getTables(configfile)
     characters = loadCharacters(tables)
     
-    print characters
+    pprint(characters)
     
-    fillTestInventory(tables,characters)
+    for key in characters.keys():
+        print("Filling Character " + key)
+        characters[key] = fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
+        for char in characters:
+            print "%s %s"%(char,str(characters[char]))
+    
 
 #===============================================================================
 # root = Tk()
