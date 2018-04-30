@@ -16,7 +16,8 @@ from Tkinter import *
 from tkFileDialog import *
 from conf import logbox as log
 from gui.window import *
-from inventory import *
+from backend.inventory import *
+from zim.plugins.distractionfree import _minsize
 
 __author__ = "Christian Wunderlich"
 __copyright__ = "(C) 2017 " + __author__
@@ -31,11 +32,14 @@ class inventoryWindow(blankWindow):
     def __init__(self, tables, characters):
         blankWindow.__init__(self)
         self.window.title = 'Inventory'
-        self.catDropDownBox(["Test1","Test2"])
-        self.charDropDownBox(["Tom", "Tim","Tony"])
-        self.itemListBox(["1","2","3"])
+        self.catDropDownBox(tables.keys())
+        self.charDropDownBox(characters.keys())
+        self.itemListBox(tables[tables.keys()[0]])
         self.inventoryListBox("")
         self.addButtons()
+        self.window.columnconfigure(0, minsize=400)
+        self.window.columnconfigure(2, minsize=400)
+
         self.window.mainloop()
         
         
@@ -62,6 +66,7 @@ class inventoryWindow(blankWindow):
     
     def itemListBox(self, items):
         self.listbox = Listbox(self.window)
+        self.listbox.config(width = 40)
         self.listbox.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
         
         for item in items:
@@ -69,6 +74,7 @@ class inventoryWindow(blankWindow):
     
     def inventoryListBox(self, inventory):
         self.listbox = Listbox(self.window)
+        self.listbox.config(width = 40)
         self.listbox.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
         
         for item in inventory:
@@ -87,6 +93,3 @@ class inventoryWindow(blankWindow):
     def totalText(self, totalSum):
         pass
         
-
-
-mywindow = inventoryWindow()
