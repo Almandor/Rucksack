@@ -40,6 +40,7 @@ def getTables(configfile):
     '''
     
     Fill tables-dictionary with Contents of Data files
+    Filles one dictionary with Categories and all items as list.
     \param configfile Name of the config file.
     \retval tables Content of temtables as dictionary
     

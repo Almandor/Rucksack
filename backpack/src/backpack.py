@@ -29,6 +29,9 @@ from Tkinter import *
 from backend import inventory as inv
 from pprint import pprint
 from conf import logbox as log
+from gui import window
+from gui import inventory_win
+
 # from unicodedata import category
 
 # import src.modules
@@ -47,13 +50,16 @@ if __name__ == '__main__':
     tables = inv.getTables(configfile)
     characters = inv.loadCharacters(tables)
     
-    pprint(characters)
     
-    for key in characters.keys():
-        print("Filling Character " + key)
-        characters[key] = inv.fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
-        for char in characters:
-            print "%s %s"%(char,str(characters[char]))
+#     for key in characters.keys():
+#         print("Filling Character " + key)
+#         characters[key] = inv.fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
+#         for char in characters:
+#             print "%s %s"%(char,str(characters[char]))
+    
+       
+    mywindow = inventory_win.inventoryWindow(tables,characters)
+    
     
 
 #===============================================================================
