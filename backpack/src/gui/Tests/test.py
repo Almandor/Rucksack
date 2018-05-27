@@ -19,16 +19,20 @@ root = Tk()
 
 tree = ttk.Treeview(root)
 
-columns = ("one", "two")
+columns = ("one", "two", "three")
 tree["columns"] = columns
+
 tree.column("one", width=100)
 tree.column("two", width=100)
+tree.column("three", width=100)
 tree.heading("one", text="column A")
 tree.heading("two", text="column B")
+tree.heading("three", text="column C")
 
-tree.insert("", 0, text="Line 1", values=("1A", "1b"))
 
-id2 = tree.insert("", 1, "dir2", text="Dir 2")
+tree.insert("one", 0, text="Line 1", values=("1A", "1b"))
+
+id2 = tree.insert("one", 1, "dir2", text="Dir 2")
 tree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A", "2B"))
 
 ##alternatively:
