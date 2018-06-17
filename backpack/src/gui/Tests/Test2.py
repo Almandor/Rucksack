@@ -6,7 +6,7 @@ Created on Mar 21, 2016
 import Tkinter
 import ttk
 
-class Begueradj(Tkinter.Frame):
+class mainwindow(Tkinter.Frame):
     '''
     classdocs
     '''
@@ -68,7 +68,7 @@ class Begueradj(Tkinter.Frame):
 
 def main():
     root=Tkinter.Tk()
-    d=Begueradj(root)
+    d=mainwindow(root)
     root.mainloop()
 
 if __name__=="__main__":

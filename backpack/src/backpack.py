@@ -59,6 +59,7 @@ if __name__ == '__main__':
     
        
     mywindow = inventory_win.inventoryWindow(tables,characters)
+    inv.getTableHeaders(tables,"001_Weapons")
     
     
 

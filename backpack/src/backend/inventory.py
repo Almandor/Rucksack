@@ -113,3 +113,7 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
     logger = log.createLogger("LoadChars", "debug", logpath='', logfile="rucksack.log")
     logger.debug("Test")
     return characters
+
+def getTableHeaders(tables, selectedCategory):
+    print (tables[selectedCategory][0].keys())
+    pass

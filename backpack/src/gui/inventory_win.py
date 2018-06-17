@@ -16,8 +16,9 @@ from Tkinter import *
 from tkFileDialog import *
 from conf import logbox as log
 from gui.window import *
-from backend.inventory import *
-from zim.plugins.distractionfree import _minsize
+from backend import inventory as inv
+
+# from zim.plugins.distractionfree import _minsize
 
 __author__ = "Christian Wunderlich"
 __copyright__ = "(C) 2017 " + __author__
@@ -32,24 +33,31 @@ class inventoryWindow(blankWindow):
     def __init__(self, tables, characters):
         blankWindow.__init__(self)
         self.window.title = 'Inventory'
-        self.catDropDownBox(tables.keys())
+        self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
         self.itemListBox(tables[tables.keys()[0]])
         self.inventoryListBox("")
         self.addButtons()
         self.window.columnconfigure(0, minsize=400)
         self.window.columnconfigure(2, minsize=400)
+        self.getTableHeaders = inv.getTableHeaders
+        self.tables = tables
+        self.characters = characters
+        self.getTableHeaders(self.tables, self.tables.keys()[0])
 
         self.window.mainloop()
+
+    def wrapperTableHeaders(self, selection):
+        self.getTableHeaders(self.tables, selection)
         
         
-    def catDropDownBox(self, categories):
+    def catDropDownBox(self, categories,tables):
         self.dropVar=StringVar()
         self.dropVar.set(categories[0])
         self.popupMenu = OptionMenu(self.window, 
                                self.dropVar, 
                                *categories, 
-                               command=self.notdoneyet())
+                               command=self.wrapperTableHeaders)  #inv.getTableHeaders(tables,str(self.dropVar)))
         self.popupMenu.grid(column = 0, row = 0, sticky = "nw")
 
         
