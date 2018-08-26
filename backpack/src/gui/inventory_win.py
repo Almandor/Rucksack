@@ -17,6 +17,8 @@ from tkFileDialog import *
 from conf import logbox as log
 from gui.window import *
 from backend import inventory as inv
+from pprint import pprint
+import ttk
 
 # from zim.plugins.distractionfree import _minsize
 
@@ -35,7 +37,13 @@ class inventoryWindow(blankWindow):
         self.window.title = 'Inventory'
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
-        self.itemListBox(tables[tables.keys()[0]])
+        # self.itemListBox(tables[tables.keys()[0]])
+        print(tables.keys())
+        self.tables = tables
+        self.tree_columns = tables[tables.keys()[0]][0].keys()
+        self.tree_data = ""
+        self.tree_item_box()
+        self._build_tree()
         self.inventoryListBox("")
         self.addButtons()
         self.window.columnconfigure(0, minsize=400)
@@ -72,14 +80,44 @@ class inventoryWindow(blankWindow):
         
         self.popupMenu.grid(column = 2, row = 0, sticky = "nw")
     
-    def itemListBox(self, items):
-        self.listbox = Listbox(self.window)
-        self.listbox.config(width = 40)
-        self.listbox.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-        
-        for item in items:
-                self.listbox.insert(END, item)
-    
+    # def itemListBox(self, items):
+    #     self.listbox = Listbox(self.window)
+    #     self.listbox.config(width = 40)
+    #     self.listbox.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
+    #
+    #     for item in items:
+    #             self.listbox.insert(END, item)
+
+    def tree_item_box(self):
+        container1 = ttk.Frame()
+        container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
+        self.tree = ttk.Treeview(columns=self.tree_columns, show="headings")
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree.xview)
+        self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree.grid(column=0, row=0, sticky='nsew', in_=container1)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container1)
+        hsb.grid(column=0, row=1, sticky='ew', in_=container1)
+        container1.grid_columnconfigure(0, weight=1)
+        container1.grid_rowconfigure(0, weight=1)
+
+    def _build_tree(self):
+        for col in self.tree_columns:
+            self.tree.heading(col, text=col.title(),
+                              command=lambda c=col: sortby(self.tree, c, 0))
+            # XXX tkFont.Font().measure expected args are incorrect according
+            #     to the Tk docs
+            self.tree.column(col, width=60)
+        for i in range(0, len(self.tables[self.tables.keys()[0]])):
+            self.tree.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
+        # for item in tree_data:
+        #     self.tree.insert('', 'end', values=item)
+            # adjust columns lenghts if necessary
+            # for indx, val in enumerate(item):
+            #     ilen = tkFont.Font().measure(val)
+            #     if self.tree.column(tree_columns[indx], width=None) < ilen:
+            #         self.tree.column(tree_columns[indx], width=ilen)
+
     def inventoryListBox(self, inventory):
         self.listbox = Listbox(self.window)
         self.listbox.config(width = 40)

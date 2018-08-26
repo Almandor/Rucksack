@@ -62,6 +62,7 @@ class App(object):
         hsb.grid(column=0, row=1, sticky='ew', in_=container)
         container.grid_columnconfigure(0, weight=1)
         container.grid_rowconfigure(0, weight=1)
+
     def _build_tree(self):
         for col in tree_columns:
             self.tree.heading(col, text=col.title(),
