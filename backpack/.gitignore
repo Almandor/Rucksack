@@ -1,3 +1,11 @@
 backpack/src/doc/
 *.log
 backpack/src/Doxyfile
+*.tex
+*.pdf
+*.md5
+*.pyc
+.idea/
+doc/
+*.pyw
+*.pyo
