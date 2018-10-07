@@ -1,0 +1,6 @@
+<map id="__init__" name="__init__">
+<area shape="rect" id="node2" href="$classbackpack_1_1src_1_1gui_1_1window_1_1blankWindow.html#a6069616fddec73cdedeca6b39175887d" title="This private method just adds the menu bar into the window&#39;s layout. " alt="" coords="120,5,209,32"/>
+<area shape="rect" id="node3" href="$classbackpack_1_1src_1_1gui_1_1window_1_1blankWindow.html#aba422042633b8db7eca93d9743b5c206" title="This method just opens a message window with the basic information about the rpg&#45;tools XML Generator ..." alt="" coords="121,56,208,83"/>
+<area shape="rect" id="node4" href="$classbackpack_1_1src_1_1gui_1_1window_1_1blankWindow.html#a6c20cb6477ad16c8bdb83537848c6029" title="Method for closing the window and opening the main window. " alt="" coords="257,31,344,57"/>
+<area shape="rect" id="node5" href="$classbackpack_1_1src_1_1gui_1_1window_1_1blankWindow.html#ac8036a5fd13297b7c43978a84da21336" title="a simple dummy method for not yet implemented methods " alt="" coords="257,81,344,108"/>
+</map>
