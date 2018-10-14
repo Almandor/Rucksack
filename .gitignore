@@ -1,0 +1,5 @@
+doc/
+.ideas/
+*.pyc
+*.pyw
+*.pyo
