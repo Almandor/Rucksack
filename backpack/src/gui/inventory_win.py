@@ -48,8 +48,9 @@ class inventoryWindow(blankWindow):
         self.tree_columns = tables[tables.keys()[0]][0].keys()
         self.tree_data = ""
         self.tree_shop_box()
-        self._build_tree()
-        self.tree_inventory_boy()
+        self._build_tree_shop()
+        self.tree_inventory_box()
+        self._build_tree_char()
         self.addButtons()
         self.window.columnconfigure(0, minsize=400)
         self.window.columnconfigure(2, minsize=400)
@@ -101,11 +102,11 @@ class inventoryWindow(blankWindow):
 
         container1 = ttk.Frame()
         container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-        self.tree = ttk.Treeview(columns=self.tree_columns, show="headings")
-        vsb = ttk.Scrollbar(orient="vertical", command=self.tree.yview)
-        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree.xview)
-        self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-        self.tree.grid(column=0, row=0, sticky='nsew', in_=container1)
+        self.tree_shop = ttk.Treeview(columns=self.tree_columns, show="headings")
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree_shop.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree_shop.xview)
+        self.tree_shop.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree_shop.grid(column=0, row=0, sticky='nsew', in_=container1)
         vsb.grid(column=1, row=0, sticky='ns', in_=container1)
         hsb.grid(column=0, row=1, sticky='ew', in_=container1)
         container1.grid_columnconfigure(0, weight=1)
@@ -117,31 +118,59 @@ class inventoryWindow(blankWindow):
         Box um das Inventar des aktuellen Charakters anzuzeigen.
         todo: all
         '''
-        pass
+        container2 = ttk.Frame()
+        container2.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
+        self.tree_char = ttk.Treeview(columns=self.tree_columns, show="headings")
+        vsb = ttk.Scrollbar(orient="vertical", command=self.tree_char.yview)
+        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree_char.xview)
+        self.tree_char.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
+        self.tree_char.grid(column=0, row=0, sticky='nsew', in_=container2)
+        vsb.grid(column=1, row=0, sticky='ns', in_=container2)
+        hsb.grid(column=0, row=1, sticky='ew', in_=container2)
+        container2.grid_columnconfigure(0, weight=1)
+        container2.grid_rowconfigure(0, weight=1)
 
-    def _build_tree(self):
+    def _build_tree_shop(self):
         '''
         Funktion um die Trees zu sortieren
         '''
         for col in self.tree_columns:
-            self.tree.heading(col, text=col.title(),
-                              command=lambda c=col: sortby(self.tree, c, 0))
-            self.tree.column(col, width=60)
+            self.tree_shop.heading(col, text=col.title(),
+                              command=lambda c=col: sortby(self.tree_shop, c, 0))
+            self.tree_shop.column(col, width=60)
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
-            self.tree.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
+            self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
 
 
+    def _build_tree_char(self):
+        '''
+        Funktion um die Trees zu sortieren
+        '''
+        for col in self.tree_columns:
+            self.tree_char.heading(col, text=col.title(),
+                              command=lambda c=col: sortby(self.tree_char, c, 0))
+            self.tree_char.column(col, width=60)
+        # for i in range(0, len(self.tables[self.tables.keys()[0]])):
+        #     self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
+
+
+    def transfer_right(self):
+        print("Transfer right")
+        print(self.tree_shop.item(self.tree_shop.selection()))
+        self.tree_char.insert('', 'end', values=self.tree_shop.item(self.tree_shop.selection())["values"])
+        # build_tree_char()
 
     def addButtons(self):
         '''
         Anlage der Buttons um Gegenstände zu und vom Inventar zu bewegen.
         '''
 
-        self.button1 = Button(self.window, text = " --> ", command = self.notdoneyet())
+        self.button1 = Button(self.window, text = " --> ", command = self.transfer_right)
         self.button1.grid(column = 1, row = 2)
         
         self.button2 = Button(self.window, text = " <-- ", command = self.notdoneyet())
         self.button2.grid(column = 1, row = 3)
+
 
 
     def coinsText(self, coinSum):
