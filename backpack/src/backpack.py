@@ -26,9 +26,9 @@ Done:
 '''
 
 from Tkinter import *
-from backend import inventory as inv
+from inventory_backend import inventory as inv
 from pprint import pprint
-from conf import logbox as log
+from inventory_config import logbox as log
 from gui import window
 from gui import inventory_win
 

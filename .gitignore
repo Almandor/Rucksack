@@ -1,5 +1,5 @@
 doc/
-.ideas/
+.idea/
 *.pyc
 *.pyw
 *.pyo

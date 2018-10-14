@@ -6,8 +6,8 @@ import csv
 import os
 import random
 from pprint import pprint
-from conf import logbox as log
-from conf import getConfig
+from inventory_config import logbox as log
+from inventory_config import getConfig
 
 
 def listCategories(dataDirectory):

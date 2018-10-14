@@ -12,7 +12,7 @@
 '''
 from Tkinter import *
 from tkFileDialog import *
-from conf import logbox as log
+from inventory_config import logbox as log
 
 __author__ = "Marcus Schwamberger"
 __copyright__ = "(C) 2015-2017 " + __author__
