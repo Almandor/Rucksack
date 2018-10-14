@@ -32,19 +32,24 @@ __me__ = "A RPG tool package for Python 2.7"
 logger = log.createLogger('window', 'warning', '1 MB', 1, './')
 
 class inventoryWindow(blankWindow):
+
     def __init__(self, tables, characters):
+        '''
+        Hauptfenster um das Inventar der Charaktere aus einem Shop zu befüllen.
+
+        '''
+
         blankWindow.__init__(self)
         self.window.title = 'Inventory'
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
-        # self.itemListBox(tables[tables.keys()[0]])
         print(tables.keys())
         self.tables = tables
         self.tree_columns = tables[tables.keys()[0]][0].keys()
         self.tree_data = ""
-        self.tree_item_box()
+        self.tree_shop_box()
         self._build_tree()
-        self.inventoryListBox("")
+        self.tree_inventory_boy()
         self.addButtons()
         self.window.columnconfigure(0, minsize=400)
         self.window.columnconfigure(2, minsize=400)
@@ -60,6 +65,10 @@ class inventoryWindow(blankWindow):
         
         
     def catDropDownBox(self, categories,tables):
+        '''
+        Zeigt die Shopkategorien in einer Drop-Down-Box an.
+        '''
+
         self.dropVar=StringVar()
         self.dropVar.set(categories[0])
         self.popupMenu = OptionMenu(self.window, 
@@ -71,6 +80,10 @@ class inventoryWindow(blankWindow):
         
     
     def charDropDownBox(self, characters):
+        '''
+        Zeigt die Charaktere in einer Drop-Down-Box an.
+        '''
+
         self.dropVar=StringVar()
         self.dropVar.set(characters[0])
         self.popupMenu = OptionMenu(self.window, 
@@ -79,16 +92,13 @@ class inventoryWindow(blankWindow):
                                command=self.notdoneyet())
         
         self.popupMenu.grid(column = 2, row = 0, sticky = "nw")
-    
-    # def itemListBox(self, items):
-    #     self.listbox = Listbox(self.window)
-    #     self.listbox.config(width = 40)
-    #     self.listbox.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-    #
-    #     for item in items:
-    #             self.listbox.insert(END, item)
 
-    def tree_item_box(self):
+
+    def tree_shop_box(self):
+        '''
+        Box um die Ausrüstung des Shops anzuzeigen.
+        '''
+
         container1 = ttk.Frame()
         container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
         self.tree = ttk.Treeview(columns=self.tree_columns, show="headings")
@@ -101,41 +111,52 @@ class inventoryWindow(blankWindow):
         container1.grid_columnconfigure(0, weight=1)
         container1.grid_rowconfigure(0, weight=1)
 
+
+    def tree_inventory_box(self):
+        '''
+        Box um das Inventar des aktuellen Charakters anzuzeigen.
+        todo: all
+        '''
+        pass
+
     def _build_tree(self):
+        '''
+        Funktion um die Trees zu sortieren
+        '''
         for col in self.tree_columns:
             self.tree.heading(col, text=col.title(),
                               command=lambda c=col: sortby(self.tree, c, 0))
-            # XXX tkFont.Font().measure expected args are incorrect according
-            #     to the Tk docs
             self.tree.column(col, width=60)
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
             self.tree.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
-        # for item in tree_data:
-        #     self.tree.insert('', 'end', values=item)
-            # adjust columns lenghts if necessary
-            # for indx, val in enumerate(item):
-            #     ilen = tkFont.Font().measure(val)
-            #     if self.tree.column(tree_columns[indx], width=None) < ilen:
-            #         self.tree.column(tree_columns[indx], width=ilen)
 
-    def inventoryListBox(self, inventory):
-        self.listbox = Listbox(self.window)
-        self.listbox.config(width = 40)
-        self.listbox.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
-        
-        for item in inventory:
-                self.listbox.insert(END, item)
-    
+
+
     def addButtons(self):
+        '''
+        Anlage der Buttons um Gegenstände zu und vom Inventar zu bewegen.
+        '''
+
         self.button1 = Button(self.window, text = " --> ", command = self.notdoneyet())
         self.button1.grid(column = 1, row = 2)
         
         self.button2 = Button(self.window, text = " <-- ", command = self.notdoneyet())
         self.button2.grid(column = 1, row = 3)
-    
+
+
     def coinsText(self, coinSum):
+        '''
+        Funktion um Geld des Charakters anzuzeigen
+        todo: all
+        '''
+
         pass
-    
+
+
     def totalText(self, totalSum):
+        '''
+        Funktion um das Gewicht anzuzeigen
+        '''
+
         pass
         
