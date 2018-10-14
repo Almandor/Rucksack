@@ -3,11 +3,11 @@
 
 '''
 \file inventory_win.py
-\package gui.window
+\package gui
 \brief Some classes for GUI
 
 
-\date (C) 2017
+\date (C) 2017-2018
 \author Christian Wunderlich
 \email cw@almandor.de
 \version 1.0
@@ -32,7 +32,15 @@ __me__ = "A RPG tool package for Python 2.7"
 logger = log.createLogger('window', 'warning', '1 MB', 1, './')
 
 class inventoryWindow(blankWindow):
+    '''
+    Description
+    '''
     def __init__(self, tables, characters):
+        '''
+        Description
+        \param tables Description
+        \param characters Description
+        '''
         blankWindow.__init__(self)
         self.window.title = 'Inventory'
         self.catDropDownBox(tables.keys(), tables)
@@ -56,10 +64,21 @@ class inventoryWindow(blankWindow):
         self.window.mainloop()
 
     def wrapperTableHeaders(self, selection):
+        '''
+        Description
+        
+        \param selection description
+        '''
         self.getTableHeaders(self.tables, selection)
         
         
     def catDropDownBox(self, categories,tables):
+        '''
+        Description
+        
+        \param categories Description
+        \param tables description
+        '''
         self.dropVar=StringVar()
         self.dropVar.set(categories[0])
         self.popupMenu = OptionMenu(self.window, 
@@ -89,6 +108,9 @@ class inventoryWindow(blankWindow):
     #             self.listbox.insert(END, item)
 
     def tree_item_box(self):
+        '''
+        Description
+        '''
         container1 = ttk.Frame()
         container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
         self.tree = ttk.Treeview(columns=self.tree_columns, show="headings")
@@ -102,6 +124,9 @@ class inventoryWindow(blankWindow):
         container1.grid_rowconfigure(0, weight=1)
 
     def _build_tree(self):
+        '''
+        Description
+        '''
         for col in self.tree_columns:
             self.tree.heading(col, text=col.title(),
                               command=lambda c=col: sortby(self.tree, c, 0))
@@ -119,6 +144,11 @@ class inventoryWindow(blankWindow):
             #         self.tree.column(tree_columns[indx], width=ilen)
 
     def inventoryListBox(self, inventory):
+        '''
+        Description
+        
+        \param inventory Description
+        '''
         self.listbox = Listbox(self.window)
         self.listbox.config(width = 40)
         self.listbox.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
@@ -127,6 +157,9 @@ class inventoryWindow(blankWindow):
                 self.listbox.insert(END, item)
     
     def addButtons(self):
+        '''
+        Description
+        '''
         self.button1 = Button(self.window, text = " --> ", command = self.notdoneyet())
         self.button1.grid(column = 1, row = 2)
         
@@ -134,8 +167,28 @@ class inventoryWindow(blankWindow):
         self.button2.grid(column = 1, row = 3)
     
     def coinsText(self, coinSum):
+        '''
+        Description
+        
+        \param coinSum
+        
+        ----
+        \todo point 1
+        \todo point 2
+        \todo point x
+        '''
         pass
     
     def totalText(self, totalSum):
+         '''
+        Description
+        
+        \param totalSum
+        
+        ----
+        \todo point 1
+        \todo point 2
+        \todo point x
+        '''       
         pass
         
