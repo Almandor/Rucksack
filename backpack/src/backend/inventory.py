@@ -13,8 +13,8 @@ from conf import getConfig
 
 def listCategories(dataDirectory):
     '''
-
     Loading Filenames in Data Directory as Categories
+
     \param dataDirectory Directory where the data files are located
     \retval category list of Item categories
 
@@ -45,7 +45,6 @@ def listCategories(dataDirectory):
 
 def getTables(configfile):
     '''
-
     Fill tables-dictionary with Contents of Data files
     Fills one dictionary with Categories and all items as list.
 
