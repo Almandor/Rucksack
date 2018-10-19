@@ -58,6 +58,8 @@ class inventoryWindow(blankWindow):
         self.tables = tables
         self.characters = characters
         self.getTableHeaders(self.tables, self.tables.keys()[0])
+        self.tree_char.bind("<Double-1>", self.delete_from_inventory)
+        self.tree_shop.bind("<Double-1>", self.transfer_right)
 
         self.window.mainloop()
 
@@ -154,16 +156,16 @@ class inventoryWindow(blankWindow):
         #     self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
 
 
-    def transfer_right(self):
+    def transfer_right(self, blubb = ""):
         '''
         Adds the item which is selected in the shop window to the character inventory
         :return:
         '''
-        print("Transfer right")
-        print(self.tree_shop.item(self.tree_shop.selection()))
+        print("DEBUG: transfer_right")
+        print(blubb) # Testausgabe des unnützen Parameters
         self.tree_char.insert('', 'end', values=self.tree_shop.item(self.tree_shop.selection())["values"])
 
-    def delete_from_inventory(self):
+    def delete_from_inventory(self, blubb = ""):
         '''
         Deletes selected item from character window
         :return:
