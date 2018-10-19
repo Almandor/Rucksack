@@ -155,10 +155,21 @@ class inventoryWindow(blankWindow):
 
 
     def transfer_right(self):
+        '''
+        Adds the item which is selected in the shop window to the character inventory
+        :return:
+        '''
         print("Transfer right")
         print(self.tree_shop.item(self.tree_shop.selection()))
         self.tree_char.insert('', 'end', values=self.tree_shop.item(self.tree_shop.selection())["values"])
-        # build_tree_char()
+
+    def delete_from_inventory(self):
+        '''
+        Deletes selected item from character window
+        :return:
+        '''
+        print("DEBUG: delete_from_inventory")
+        self.tree_char.delete(self.tree_char.selection())
 
     def addButtons(self):
         '''
@@ -168,7 +179,7 @@ class inventoryWindow(blankWindow):
         self.button1 = Button(self.window, text = " --> ", command = self.transfer_right)
         self.button1.grid(column = 1, row = 2)
         
-        self.button2 = Button(self.window, text = " <-- ", command = self.notdoneyet())
+        self.button2 = Button(self.window, text = " <-- ", command = self.delete_from_inventory)
         self.button2.grid(column = 1, row = 3)
 
 
