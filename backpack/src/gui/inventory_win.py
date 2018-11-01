@@ -162,8 +162,10 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         print("DEBUG: transfer_right")
-        print(blubb) # Testausgabe des unnützen Parameters
         self.tree_char.insert('', 'end', values=self.tree_shop.item(self.tree_shop.selection())["values"])
+
+        for child in self.tree_char.get_children():
+            print(self.tree_char.item(child)["values"]) # Todo: Got the items, now I need to save them
 
     def delete_from_inventory(self, blubb = ""):
         '''
