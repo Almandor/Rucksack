@@ -75,9 +75,7 @@ def fillTestInventory(tables):
     
     '''
     print("fillTestInventory -- Working on it")
-    numbers = 0
-    selectcategory = 0
-    selectitem = 0
+
     inventory = {}
     
     for j in range(0,3):
@@ -116,4 +114,7 @@ def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : [
 
 def getTableHeaders(tables, selectedCategory):
     print (tables[selectedCategory][0].keys())
+    pass
+
+def save_character():
     pass

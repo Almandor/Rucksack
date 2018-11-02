@@ -29,7 +29,7 @@ __version__ = "1.0"
 __license__ = "GNU V3.0"
 __me__ = "A RPG tool package for Python 2.7"
 
-logger = log.createLogger('window', 'warning', '1 MB', 1, './')
+logger = log.createLogger('window', 'debug', '1 MB', 1, logpath = './', logfile = 'inventory_win.log')
 
 class inventoryWindow(blankWindow):
 
