@@ -43,7 +43,6 @@ class inventoryWindow(blankWindow):
         self.window.title = 'Inventory'
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
-        print(tables.keys())
         self.tables = tables
         self.tree_columns = tables[tables.keys()[0]][0].keys()
         self.tree_data = ""
@@ -60,6 +59,7 @@ class inventoryWindow(blankWindow):
         self.getTableHeaders(self.tables, self.tables.keys()[0])
         self.tree_char.bind("<Double-1>", self.delete_from_inventory)
         self.tree_shop.bind("<Double-1>", self.transfer_right)
+        self.addMenu()
 
         self.window.mainloop()
 
@@ -203,4 +203,38 @@ class inventoryWindow(blankWindow):
         '''
 
         pass
-        
+
+    def addMenu(self):
+        '''
+        Funktion um das Menü anzuzeigen
+        :return:
+        '''
+
+        self.menubar = Menu(self.window)
+        # self.menubar.add_command(label="Charactere", command=self.dummy)
+        charmenu = Menu(self.menubar, tearoff=0)
+        charmenu.add_command(label="Create new Char", command=popupEntry("Enter Charaktername"))
+        self.menubar.add_cascade(label="Charactere", menu=charmenu)
+        self.menubar.add_command(label="Quit!", command=self.window.destroy)
+        self.window.config(menu=self.menubar)
+
+    def dummy(self):
+        pass
+
+class popupEntry(blankWindow):
+    def __init__(self, name):
+        '''
+        Popup zur Eingabe von Werten
+        '''
+
+        blankWindow.__init__(self)
+        self.window.title = name
+        self.addEntryfield()
+        self.addButtons()
+        self.window.mainloop()
+
+    def addEntryfield(self):
+        pass
+
+    def addButtons(self):
+        pass
