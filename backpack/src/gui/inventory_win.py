@@ -31,7 +31,10 @@ __me__ = "A RPG tool package for Python 2.7"
 
 logger = log.createLogger('window', 'debug', '1 MB', 1, logpath = './', logfile = 'inventory_win.log')
 
+
+
 class inventoryWindow(blankWindow):
+
 
     def __init__(self, tables, characters):
         '''
@@ -51,8 +54,8 @@ class inventoryWindow(blankWindow):
         self.tree_inventory_box()
         self._build_tree_char()
         self.addButtons()
-        self.window.columnconfigure(0, minsize=400)
-        self.window.columnconfigure(2, minsize=400)
+        self.window.columnconfigure(0, minsize = 400)
+        self.window.columnconfigure(2, minsize = 400)
         self.getTableHeaders = inv.getTableHeaders
         self.tables = tables
         self.characters = characters
@@ -63,37 +66,37 @@ class inventoryWindow(blankWindow):
 
         self.window.mainloop()
 
+
     def wrapperTableHeaders(self, selection):
         self.getTableHeaders(self.tables, selection)
-        
-        
-    def catDropDownBox(self, categories,tables):
+
+
+    def catDropDownBox(self, categories, tables):
         '''
         Zeigt die Shopkategorien in einer Drop-Down-Box an.
         '''
 
-        self.dropVar=StringVar()
+        self.dropVar = StringVar()
         self.dropVar.set(categories[0])
-        self.popupMenu = OptionMenu(self.window, 
-                               self.dropVar, 
-                               *categories, 
-                               command=self.wrapperTableHeaders)  #inv.getTableHeaders(tables,str(self.dropVar)))
+        self.popupMenu = OptionMenu(self.window,
+                               self.dropVar,
+                               *categories,
+                               command = self.wrapperTableHeaders)  #inv.getTableHeaders(tables,str(self.dropVar)))
         self.popupMenu.grid(column = 0, row = 0, sticky = "nw")
 
-        
-    
+
     def charDropDownBox(self, characters):
         '''
         Zeigt die Charaktere in einer Drop-Down-Box an.
         '''
 
-        self.dropVar=StringVar()
+        self.dropVar = StringVar()
         self.dropVar.set(characters[0])
-        self.popupMenu = OptionMenu(self.window, 
-                               self.dropVar, 
-                               *characters, 
-                               command=self.notdoneyet())
-        
+        self.popupMenu = OptionMenu(self.window,
+                               self.dropVar,
+                               *characters,
+                               command = self.notdoneyet())
+
         self.popupMenu.grid(column = 2, row = 0, sticky = "nw")
 
 
@@ -104,15 +107,15 @@ class inventoryWindow(blankWindow):
 
         container1 = ttk.Frame()
         container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-        self.tree_shop = ttk.Treeview(columns=self.tree_columns, show="headings")
-        vsb = ttk.Scrollbar(orient="vertical", command=self.tree_shop.yview)
-        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree_shop.xview)
-        self.tree_shop.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-        self.tree_shop.grid(column=0, row=0, sticky='nsew', in_=container1)
-        vsb.grid(column=1, row=0, sticky='ns', in_=container1)
-        hsb.grid(column=0, row=1, sticky='ew', in_=container1)
-        container1.grid_columnconfigure(0, weight=1)
-        container1.grid_rowconfigure(0, weight=1)
+        self.tree_shop = ttk.Treeview(columns = self.tree_columns, show = "headings")
+        vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_shop.yview)
+        hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop.xview)
+        self.tree_shop.configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
+        self.tree_shop.grid(column = 0, row = 0, sticky = 'nsew', in_ = container1)
+        vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container1)
+        hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container1)
+        container1.grid_columnconfigure(0, weight = 1)
+        container1.grid_rowconfigure(0, weight = 1)
 
 
     def tree_inventory_box(self):
@@ -122,26 +125,27 @@ class inventoryWindow(blankWindow):
         '''
         container2 = ttk.Frame()
         container2.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
-        self.tree_char = ttk.Treeview(columns=self.tree_columns, show="headings")
-        vsb = ttk.Scrollbar(orient="vertical", command=self.tree_char.yview)
-        hsb = ttk.Scrollbar(orient="horizontal", command=self.tree_char.xview)
-        self.tree_char.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
-        self.tree_char.grid(column=0, row=0, sticky='nsew', in_=container2)
-        vsb.grid(column=1, row=0, sticky='ns', in_=container2)
-        hsb.grid(column=0, row=1, sticky='ew', in_=container2)
-        container2.grid_columnconfigure(0, weight=1)
-        container2.grid_rowconfigure(0, weight=1)
+        self.tree_char = ttk.Treeview(columns = self.tree_columns, show = "headings")
+        vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_char.yview)
+        hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_char.xview)
+        self.tree_char.configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
+        self.tree_char.grid(column = 0, row = 0, sticky = 'nsew', in_ = container2)
+        vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container2)
+        hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container2)
+        container2.grid_columnconfigure(0, weight = 1)
+        container2.grid_rowconfigure(0, weight = 1)
+
 
     def _build_tree_shop(self):
         '''
         Funktion um die Trees zu sortieren
         '''
         for col in self.tree_columns:
-            self.tree_shop.heading(col, text=col.title(),
-                              command=lambda c=col: sortby(self.tree_shop, c, 0))
-            self.tree_shop.column(col, width=60)
+            self.tree_shop.heading(col, text = col.title(),
+                              command = lambda c = col: sortby(self.tree_shop, c, 0))
+            self.tree_shop.column(col, width = 60)
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
-            self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
+            self.tree_shop.insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
 
     def _build_tree_char(self):
@@ -149,9 +153,9 @@ class inventoryWindow(blankWindow):
         Funktion um die Trees zu sortieren
         '''
         for col in self.tree_columns:
-            self.tree_char.heading(col, text=col.title(),
-                              command=lambda c=col: sortby(self.tree_char, c, 0))
-            self.tree_char.column(col, width=60)
+            self.tree_char.heading(col, text = col.title(),
+                              command = lambda c = col: sortby(self.tree_char, c, 0))
+            self.tree_char.column(col, width = 60)
         # for i in range(0, len(self.tables[self.tables.keys()[0]])):
         #     self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
 
@@ -162,10 +166,11 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         print("DEBUG: transfer_right")
-        self.tree_char.insert('', 'end', values=self.tree_shop.item(self.tree_shop.selection())["values"])
+        self.tree_char.insert('', 'end', values = self.tree_shop.item(self.tree_shop.selection())["values"])
 
         for child in self.tree_char.get_children():
-            print(self.tree_char.item(child)["values"]) # Todo: Got the items, now I need to save them
+            print(self.tree_char.item(child)["values"])  # Todo: Got the items, now I need to save them
+
 
     def delete_from_inventory(self, blubb = ""):
         '''
@@ -175,6 +180,7 @@ class inventoryWindow(blankWindow):
         print("DEBUG: delete_from_inventory")
         self.tree_char.delete(self.tree_char.selection())
 
+
     def addButtons(self):
         '''
         Anlage der Buttons um Gegenstände zu und vom Inventar zu bewegen.
@@ -182,10 +188,9 @@ class inventoryWindow(blankWindow):
 
         self.button1 = Button(self.window, text = " --> ", command = self.transfer_right)
         self.button1.grid(column = 1, row = 2)
-        
+
         self.button2 = Button(self.window, text = " <-- ", command = self.delete_from_inventory)
         self.button2.grid(column = 1, row = 3)
-
 
 
     def coinsText(self, coinSum):
@@ -204,24 +209,40 @@ class inventoryWindow(blankWindow):
 
         pass
 
+
     def addMenu(self):
         '''
         Funktion um das Menü anzuzeigen
         :return:
         '''
 
-        self.menubar = Menu(self.window)
-        # self.menubar.add_command(label="Charactere", command=self.dummy)
-        charmenu = Menu(self.menubar, tearoff=0)
-        charmenu.add_command(label="Create new Char", command=popupEntry("Enter Charaktername"))
-        self.menubar.add_cascade(label="Charactere", menu=charmenu)
-        self.menubar.add_command(label="Quit!", command=self.window.destroy)
-        self.window.config(menu=self.menubar)
+#        self.menubar = Menu(self.window)
+#        # self.menubar.add_command(label="Charactere", command=self.dummy)
+#        charmenu = Menu(self.menubar, tearoff=0)
+#        charmenu.add_command(label="Create new Char", command=popupEntry("Enter Charaktername"))
+#        self.menubar.add_cascade(label="Charactere", menu=charmenu)
+#        self.menubar.add_command(label="Quit!", command=self.window.destroy)
+#        self.window.config(menu=self.menubar)
+        self.charmenu = Menu(master = self.menu)
+        self.menu.add_cascade(label = "Characters",
+                              menu = self.charmenu)
+        self.charmenu.add_command(label = "create new character",
+                                  command = self.__newChar)
+        self.menu.add_command(label = "Quit!", command = self.window.destroy)
+
 
     def dummy(self):
         pass
 
+
+    def __newChar(self):
+        popupEntry("Enter Charaktername")
+
+
+
 class popupEntry(blankWindow):
+
+
     def __init__(self, name):
         '''
         Popup zur Eingabe von Werten
@@ -233,8 +254,10 @@ class popupEntry(blankWindow):
         self.addButtons()
         self.window.mainloop()
 
+
     def addEntryfield(self):
         pass
+
 
     def addButtons(self):
         pass
