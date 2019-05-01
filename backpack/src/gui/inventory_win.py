@@ -256,7 +256,13 @@ class popupEntry(blankWindow):
 
 
     def addEntryfield(self):
-        pass
+        char = Frame(self)
+        char_label = Label(char, text="Charactername")
+        char_label.grid(row=0, sticky="w")
+        charname = StringVar
+        char_entry = Entry(char, textvariable = charname)
+        char_entry.grid(row=1, sticky="w")
+        char.grid(row=1)
 
 
     def addButtons(self):
