@@ -39,11 +39,14 @@ class inventoryWindow(blankWindow):
     def __init__(self, tables, characters):
         '''
         Hauptfenster um das Inventar der Charaktere aus einem Shop zu befüllen.
+        \param tables ???
+        \param characters ???
 
         '''
 
         blankWindow.__init__(self)
-        self.window.title = 'Inventory'
+#        self.window.title = 'Inventory'
+        self.window.title('Inventory')
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
         self.tables = tables
@@ -68,12 +71,18 @@ class inventoryWindow(blankWindow):
 
 
     def wrapperTableHeaders(self, selection):
+        '''
+        Description ???
+        \param selection ???
+        '''
         self.getTableHeaders(self.tables, selection)
 
 
     def catDropDownBox(self, categories, tables):
         '''
         Zeigt die Shopkategorien in einer Drop-Down-Box an.
+        \param categories ???
+        \param tables ???
         '''
 
         self.dropVar = StringVar()
@@ -88,6 +97,7 @@ class inventoryWindow(blankWindow):
     def charDropDownBox(self, characters):
         '''
         Zeigt die Charaktere in einer Drop-Down-Box an.
+        \param characters ???
         '''
 
         self.dropVar = StringVar()
@@ -163,6 +173,7 @@ class inventoryWindow(blankWindow):
     def transfer_right(self, blubb = ""):
         '''
         Adds the item which is selected in the shop window to the character inventory
+        \param blubb ???
         :return:
         '''
         print("DEBUG: transfer_right")
@@ -175,6 +186,7 @@ class inventoryWindow(blankWindow):
     def delete_from_inventory(self, blubb = ""):
         '''
         Deletes selected item from character window
+        \param blubb ???
         :return:
         '''
         print("DEBUG: delete_from_inventory")
@@ -196,6 +208,7 @@ class inventoryWindow(blankWindow):
     def coinsText(self, coinSum):
         '''
         Funktion um Geld des Charakters anzuzeigen
+        \param coinSum ???
         todo: all
         '''
 
@@ -205,6 +218,7 @@ class inventoryWindow(blankWindow):
     def totalText(self, totalSum):
         '''
         Funktion um das Gewicht anzuzeigen
+        \param totalSum ???
         '''
 
         pass
@@ -236,6 +250,9 @@ class inventoryWindow(blankWindow):
 
 
     def __newChar(self):
+        '''
+        Description ???
+        '''
         popupEntry("Enter Charaktername")
 
 
@@ -246,24 +263,34 @@ class popupEntry(blankWindow):
     def __init__(self, name):
         '''
         Popup zur Eingabe von Werten
+        \param name ???
         '''
 
         blankWindow.__init__(self)
-        self.window.title = name
+
+#        self.window.title = name
+        self.window.title(name)
         self.addEntryfield()
         self.addButtons()
         self.window.mainloop()
 
 
     def addEntryfield(self):
-        char = Frame(self)
-        char_label = Label(char, text="Charactername")
-        char_label.grid(row=0, sticky="w")
-        charname = StringVar
-        char_entry = Entry(char, textvariable = charname)
-        char_entry.grid(row=1, sticky="w")
-        char.grid(row=1)
+        '''
+        Description ???
+        '''
+        self.char = Frame(self.window)
+
+        self.char_label = Label(self.char, text = "Charactername")
+        self.char_label.grid(row = 0, sticky = "w")
+        self.charname = StringVar()
+        self.char_entry = Entry(self.char, textvariable = self.charname)
+        self.char_entry.grid(row = 1, sticky = "w")
+        self.char.grid(row = 1)
 
 
     def addButtons(self):
+        '''
+        Description ???
+        '''
         pass
