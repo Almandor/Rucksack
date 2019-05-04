@@ -19,6 +19,7 @@ from gui.window import *
 from inventory_backend import inventory as inv
 from pprint import pprint
 import ttk
+import os
 
 # from zim.plugins.distractionfree import _minsize
 
@@ -281,11 +282,11 @@ class popupEntry(blankWindow):
         '''
         self.char = Frame(self.window)
 
-        self.char_label = Label(self.char, text = "Charactername")
-        self.char_label.grid(row = 0, sticky = "w")
+        self.char_label = Label(self.char, text = "Charactername:")
+        self.char_label.grid(row = 0, column = 0, sticky = "w", padx = (0, 10))
         self.charname = StringVar()
         self.char_entry = Entry(self.char, textvariable = self.charname)
-        self.char_entry.grid(row = 1, sticky = "w")
+        self.char_entry.grid(row = 0, column = 1, sticky = "w")
         self.char.grid(row = 1)
 
 
@@ -293,4 +294,9 @@ class popupEntry(blankWindow):
         '''
         Description ???
         '''
-        pass
+        print(os.getcwd())
+        print(os.path.exists('../images'))
+        self.plusbutton = Button(self.char, text="Add Char", image=self.plusimage)
+
+        self.plusimage = PhotoImage(master = self.plusbutton, file = '../images/plus.png')
+        self.plusbutton.gid(row=2)
