@@ -20,6 +20,8 @@ from inventory_backend import inventory as inv
 from pprint import pprint
 import ttk
 import os
+from PIL import ImageTk, Image
+
 
 # from zim.plugins.distractionfree import _minsize
 
@@ -243,6 +245,8 @@ class inventoryWindow(blankWindow):
                               menu = self.charmenu)
         self.charmenu.add_command(label = "create new character",
                                   command = self.__newChar)
+        self.charmenu.add_command(label="delete character",
+                                  command=self.__delChar)
         self.menu.add_command(label = "Quit!", command = self.window.destroy)
 
 
@@ -256,6 +260,11 @@ class inventoryWindow(blankWindow):
         '''
         popupEntry("Enter Charaktername")
 
+    def __delChar(self):
+        '''
+        Description ???
+        '''
+        pass
 
 
 class popupEntry(blankWindow):
@@ -294,9 +303,6 @@ class popupEntry(blankWindow):
         '''
         Description ???
         '''
-        print(os.getcwd())
-        print(os.path.exists('../images'))
-        self.plusbutton = Button(self.char, text="Add Char", image=self.plusimage)
 
-        self.plusimage = PhotoImage(master = self.plusbutton, file = '../images/plus.png')
-        self.plusbutton.gid(row=2)
+        self.plusbutton = Button(self.char, text="Add Char")
+        self.plusbutton.grid(row=0, column=2)
