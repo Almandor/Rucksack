@@ -233,13 +233,7 @@ class inventoryWindow(blankWindow):
         :return:
         '''
 
-#        self.menubar = Menu(self.window)
-#        # self.menubar.add_command(label="Charactere", command=self.dummy)
-#        charmenu = Menu(self.menubar, tearoff=0)
-#        charmenu.add_command(label="Create new Char", command=popupEntry("Enter Charaktername"))
-#        self.menubar.add_cascade(label="Charactere", menu=charmenu)
-#        self.menubar.add_command(label="Quit!", command=self.window.destroy)
-#        self.window.config(menu=self.menubar)
+
         self.charmenu = Menu(master = self.menu)
         self.menu.add_cascade(label = "Characters",
                               menu = self.charmenu)
@@ -247,6 +241,11 @@ class inventoryWindow(blankWindow):
                                   command = self.__newChar)
         self.charmenu.add_command(label="delete character",
                                   command=self.__delChar)
+        self.filemenu = Menu(master = self.menu)
+        self.menu.add_cascade(label = "File", menu = self.filemenu)
+        self.filemenu.add_command(label = "Load Character", command = self.__loadChar)
+        self.filemenu.add_command(label="Save Character", command = self.__saveChar)
+
         self.menu.add_command(label = "Quit!", command = self.window.destroy)
 
 
@@ -266,6 +265,17 @@ class inventoryWindow(blankWindow):
         '''
         pass
 
+    def __loadChar(self):
+        '''
+        Description ???
+        '''
+        pass
+
+    def __saveChar(self):
+        '''
+        Description ???
+        '''
+        pass
 
 class popupEntry(blankWindow):
 

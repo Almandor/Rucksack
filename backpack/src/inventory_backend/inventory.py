@@ -8,6 +8,7 @@ import random
 from pprint import pprint
 from inventory_config import logbox as log
 from inventory_config import getConfig
+import json
 
 
 def listCategories(dataDirectory):
@@ -116,5 +117,5 @@ def getTableHeaders(tables, selectedCategory):
     print (tables[selectedCategory][0].keys())
     pass
 
-def save_character():
+def save_character(name, equipment):
     pass
