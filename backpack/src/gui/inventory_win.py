@@ -114,6 +114,21 @@ class inventoryWindow(blankWindow):
         self.popupMenu.grid(column = 2, row = 0, sticky = "nw")
 
 
+    def sortby(self, col, descending):
+        """Sort tree contents when a column is clicked on."""
+        # grab values to sort
+        data = [(tree.set(child, col), child) for child in tree.get_children('')]
+
+        # reorder data
+        data.sort(reverse=descending)
+        for indx, item in enumerate(data):
+            tree.move(item[1], '', indx)
+
+        # switch the heading so that it will sort in the opposite direction
+        tree.heading(col,
+                     command=lambda col=col: sortby(tree, col, int(not descending)))
+
+
     def tree_shop_box(self):
         '''
         Box um die Ausrüstung des Shops anzuzeigen.
@@ -154,10 +169,12 @@ class inventoryWindow(blankWindow):
         '''
         Funktion um die Trees zu sortieren
         '''
+
         for col in self.tree_columns:
             self.tree_shop.heading(col, text = col.title(),
                               command = lambda c = col: sortby(self.tree_shop, c, 0))
             self.tree_shop.column(col, width = 60)
+
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
             self.tree_shop.insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
@@ -166,12 +183,11 @@ class inventoryWindow(blankWindow):
         '''
         Funktion um die Trees zu sortieren
         '''
+
         for col in self.tree_columns:
             self.tree_char.heading(col, text = col.title(),
-                              command = lambda c = col: sortby(self.tree_char, c, 0))
+                                   command = lambda c = col: sortby(self.tree_char, c, 0))
             self.tree_char.column(col, width = 60)
-        # for i in range(0, len(self.tables[self.tables.keys()[0]])):
-        #     self.tree_shop.insert('', 'end', values=self.tables[self.tables.keys()[0]][i].values())
 
 
     def transfer_right(self, blubb = ""):
@@ -182,10 +198,6 @@ class inventoryWindow(blankWindow):
         '''
         print("DEBUG: transfer_right")
         self.tree_char.insert('', 'end', values = self.tree_shop.item(self.tree_shop.selection())["values"])
-
-
-
-
 
 
     def delete_from_inventory(self, blubb = ""):
@@ -276,7 +288,8 @@ class inventoryWindow(blankWindow):
 
     def __saveChar(self):
         '''
-        Description ???
+        Schreibt Charaktere in Datei
+        todo: alles
         '''
         for child in self.tree_char.get_children():
             print(self.tree_char.item(child)["values"])  # Todo: Got the items, now I need to save them
