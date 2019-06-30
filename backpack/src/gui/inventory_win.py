@@ -19,8 +19,9 @@ from gui.window import *
 from inventory_backend import inventory as inv
 from pprint import pprint
 import ttk
+import inspect
 import os
-from PIL import ImageTk, Image
+# from PIL import ImageTk, Image
 
 
 # from zim.plugins.distractionfree import _minsize
@@ -182,8 +183,9 @@ class inventoryWindow(blankWindow):
         print("DEBUG: transfer_right")
         self.tree_char.insert('', 'end', values = self.tree_shop.item(self.tree_shop.selection())["values"])
 
-        for child in self.tree_char.get_children():
-            print(self.tree_char.item(child)["values"])  # Todo: Got the items, now I need to save them
+
+
+
 
 
     def delete_from_inventory(self, blubb = ""):
@@ -194,6 +196,7 @@ class inventoryWindow(blankWindow):
         '''
         print("DEBUG: delete_from_inventory")
         self.tree_char.delete(self.tree_char.selection())
+
 
 
     def addButtons(self):
@@ -275,7 +278,8 @@ class inventoryWindow(blankWindow):
         '''
         Description ???
         '''
-        pass
+        for child in self.tree_char.get_children():
+            print(self.tree_char.item(child)["values"])  # Todo: Got the items, now I need to save them
 
 class popupEntry(blankWindow):
 
