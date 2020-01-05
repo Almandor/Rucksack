@@ -49,12 +49,17 @@ class inventoryWindow(blankWindow):
         '''
 
         blankWindow.__init__(self)
-#        self.window.title = 'Inventory'
         self.window.title('Inventory')
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
         self.tables = tables
-        self.tree_columns = tables[tables.keys()[0]][0].keys()
+        self.tree_columns = {}
+        for key in tables.keys():
+            self.tree_columns[key] = tables[key][0].keys()
+        # print("Debug: ")
+        # print(self.tree_columns)
+        # sys.exit()
+        # self.tree_columns = tables[tables.keys()[0]][0].keys()
         self.tree_data = ""
         self.tree_shop_box()
         self._build_tree_shop()
@@ -133,18 +138,23 @@ class inventoryWindow(blankWindow):
         '''
         Box um die Ausrüstung des Shops anzuzeigen.
         '''
+        container = {}
+        self.tree_shop = {}
+        vsb = {}
+        hsb = {}
+        for key in self.tree_columns:
 
-        container1 = ttk.Frame()
-        container1.grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-        self.tree_shop = ttk.Treeview(columns = self.tree_columns, show = "headings")
-        vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_shop.yview)
-        hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop.xview)
-        self.tree_shop.configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
-        self.tree_shop.grid(column = 0, row = 0, sticky = 'nsew', in_ = container1)
-        vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container1)
-        hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container1)
-        container1.grid_columnconfigure(0, weight = 1)
-        container1.grid_rowconfigure(0, weight = 1)
+            container[key] = ttk.Frame()
+            container[key].grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
+            self.tree_shop[key] = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
+            vsb[key] = ttk.Scrollbar(orient = "vertical", command = self.tree_shop[key].yview)
+            hsb[key] = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop[key].xview)
+            self.tree_shop[key].configure(yscrollcommand = vsb[key].set, xscrollcommand = hsb[key].set)
+            self.tree_shop[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container[key])
+            vsb[key].grid(column = 1, row = 0, sticky = 'ns', in_ = container[key])
+            hsb[key].grid(column = 0, row = 1, sticky = 'ew', in_ = container[key])
+            container[key].grid_columnconfigure(0, weight = 1)
+            container[key].grid_rowconfigure(0, weight = 1)
 
 
     def tree_inventory_box(self):
