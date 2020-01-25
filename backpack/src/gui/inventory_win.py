@@ -43,27 +43,42 @@ class inventoryWindow(blankWindow):
     def __init__(self, tables, characters):
         '''
         Hauptfenster um das Inventar der Charaktere aus einem Shop zu befüllen.
-        \param tables ???
+        \param tables Dictionary welches Liste von Dictionaries enthält.
         \param characters ???
 
         '''
-
+        ## \var self.container
+        # Nimmt die Container des Shops und des Inventorys auf.
+        self.container = {}
+        ## \var self.tree_display
+        # Nimmt die Fenster Items auf
+        self.tree_display = {}
+        ## \var self.vsb
+        # Nimmt die Vertikalen Scrollbalken auf
+        self.vsb = {}
+        ## \var self.hsb
+        # Nimmt die Horizontalen Scrollbalken auf
+        self.hsb = {}
         blankWindow.__init__(self)
         self.window.title('Inventory')
         self.catDropDownBox(tables.keys(), tables)
         self.charDropDownBox(characters.keys())
         self.tables = tables
         self.tree_columns = {}
-        for key in tables.keys():
+        for key in tables.keys():           # key: 001_Weapons, 001_Weapons
             self.tree_columns[key] = tables[key][0].keys()
         # print("Debug: ")
         # print(self.tree_columns)
         # sys.exit()
         # self.tree_columns = tables[tables.keys()[0]][0].keys()
+        self.selection = list(tables.keys())[0]
         self.tree_data = ""
-        self.tree_shop_box()
+        # self.tree_shop_box()
+        self.tree_box("Shop", 0, 1)
         self._build_tree_shop()
-        self.tree_inventory_box()
+        # self.tree_inventory_box()
+        self.tree_box("Inventory", 2, 1)
+        self.switchToGrid("001_Weapons")
         self._build_tree_char()
         self.addButtons()
         self.window.columnconfigure(0, minsize = 400)
@@ -72,11 +87,29 @@ class inventoryWindow(blankWindow):
         self.tables = tables
         self.characters = characters
         self.getTableHeaders(self.tables, self.tables.keys()[0])
-        self.tree_char.bind("<Double-1>", self.delete_from_inventory)
-        self.tree_shop.bind("<Double-1>", self.transfer_right)
+        for key in self.tree_columns:
+            self.tree_display["Inventory"][key].bind("<Double-1>", self.delete_from_inventory)
+            self.tree_display["Shop"][key].bind("<Double-1>", self.transfer_right)
+
         self.addMenu()
 
         self.window.mainloop()
+
+
+    def switchToGrid(self, target):
+        '''
+        Funktion zum Ein- und Ausblenden der Container
+        \param target Gewünschte Kategorie
+        '''
+        for key in self.tables.keys():
+            for entry in self.tree_display.keys():
+                try:
+                    self.container[entry][key].grid_remove()
+                except:
+                    pass
+
+        self.container["Shop"][target].grid(column=0, row=1, sticky="nw", rowspan=3)
+        self.container["Inventory"][target].grid(column=2, row=1, sticky="nw", rowspan=3)
 
 
     def wrapperTableHeaders(self, selection):
@@ -85,6 +118,8 @@ class inventoryWindow(blankWindow):
         \param selection ???
         '''
         self.getTableHeaders(self.tables, selection)
+        self.selection = selection
+        print(self.selection)
 
 
     def catDropDownBox(self, categories, tables):
@@ -134,45 +169,78 @@ class inventoryWindow(blankWindow):
                      command=lambda col=col: sortby(tree, col, int(not descending)))
 
 
-    def tree_shop_box(self):
+    # def tree_shop_box(self):
+    #     '''
+    #     Box um die Ausrüstung des Shops anzuzeigen.
+    #     '''
+    #     container = {}
+    #     self.tree_shop = {}
+    #     vsb = {}
+    #     hsb = {}
+    #     for key in self.tree_columns:
+    #
+    #         container[key] = ttk.Frame()
+    #         container[key].grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
+    #         self.tree_shop[key] = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
+    #         vsb[key] = ttk.Scrollbar(orient = "vertical", command = self.tree_shop[key].yview)
+    #         hsb[key] = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop[key].xview)
+    #         self.tree_shop[key].configure(yscrollcommand = vsb[key].set, xscrollcommand = hsb[key].set)
+    #         self.tree_shop[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container[key])
+    #         vsb[key].grid(column = 1, row = 0, sticky = 'ns', in_ = container[key])
+    #         hsb[key].grid(column = 0, row = 1, sticky = 'ew', in_ = container[key])
+    #         container[key].grid_columnconfigure(0, weight = 1)
+    #         container[key].grid_rowconfigure(0, weight = 1)
+
+
+    # def tree_inventory_box(self):
+    #     '''
+    #     Box um das Inventar des aktuellen Charakters anzuzeigen.
+    #     todo: all
+    #     '''
+    #     container = {}
+    #     self.tree_char = {}
+    #     vsb = {}
+    #     hsb = {}
+    #     for key in self.tree_columns:
+    #
+    #         container2[key] = ttk.Frame()
+    #         container2[key].grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
+    #         self.tree_char = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
+    #         vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_char.yview)
+    #         hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_char.xview)
+    #         self.tree_char[key].configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
+    #         self.tree_char[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container2[key])
+    #         vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container2[key])
+    #         hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container2[key])
+    #         container2[key].grid_columnconfigure(0, weight = 1)
+    #         container2[key].grid_rowconfigure(0, weight = 1)
+
+
+    def tree_box(self, tabelle, grow, gcolumn):
         '''
-        Box um die Ausrüstung des Shops anzuzeigen.
+        Hilfsfunktion zum generieren der Tabellen
+        \param grow grid row parameter
+        \param gcolumn grid column parameter
+        \param tabelle Type sting Shop oder Inentory
+        :return:
         '''
-        container = {}
-        self.tree_shop = {}
-        vsb = {}
-        hsb = {}
+        self.container[tabelle] = {}
+        self.tree_display[tabelle] = {}
+        self.vsb[tabelle] = {}
+        self.hsb[tabelle] = {}
         for key in self.tree_columns:
+            self.container[tabelle][key] = ttk.Frame()
+            # self.container[tabelle][key].grid(column=gcolumn, row=grow, sticky="nw", rowspan=3)
+            self.tree_display[tabelle][key] = ttk.Treeview(columns=self.tree_columns[key], show="headings")
 
-            container[key] = ttk.Frame()
-            container[key].grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-            self.tree_shop[key] = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
-            vsb[key] = ttk.Scrollbar(orient = "vertical", command = self.tree_shop[key].yview)
-            hsb[key] = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop[key].xview)
-            self.tree_shop[key].configure(yscrollcommand = vsb[key].set, xscrollcommand = hsb[key].set)
-            self.tree_shop[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container[key])
-            vsb[key].grid(column = 1, row = 0, sticky = 'ns', in_ = container[key])
-            hsb[key].grid(column = 0, row = 1, sticky = 'ew', in_ = container[key])
-            container[key].grid_columnconfigure(0, weight = 1)
-            container[key].grid_rowconfigure(0, weight = 1)
-
-
-    def tree_inventory_box(self):
-        '''
-        Box um das Inventar des aktuellen Charakters anzuzeigen.
-        todo: all
-        '''
-        container2 = ttk.Frame()
-        container2.grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
-        self.tree_char = ttk.Treeview(columns = self.tree_columns, show = "headings")
-        vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_char.yview)
-        hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_char.xview)
-        self.tree_char.configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
-        self.tree_char.grid(column = 0, row = 0, sticky = 'nsew', in_ = container2)
-        vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container2)
-        hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container2)
-        container2.grid_columnconfigure(0, weight = 1)
-        container2.grid_rowconfigure(0, weight = 1)
+            self.vsb[tabelle][key] = ttk.Scrollbar(orient="vertical", command=self.tree_display[tabelle][key].yview)
+            self.hsb[tabelle][key] = ttk.Scrollbar(orient="horizontal", command=self.tree_display[tabelle][key].xview)
+            self.tree_display[tabelle][key].configure(yscrollcommand=self.vsb[tabelle][key].set, xscrollcommand=self.hsb[tabelle][self.selection].set)
+            self.tree_display[tabelle][key].grid(column=0, row=0, sticky='nsew', in_=self.container[tabelle][key])
+            self.vsb[tabelle][key].grid(column=1, row=0, sticky='ns', in_=self.container[tabelle][key])
+            self.hsb[tabelle][key].grid(column=0, row=1, sticky='ew', in_=self.container[tabelle][key])
+            self.container[tabelle][key].grid_columnconfigure(0, weight=1)
+            self.container[tabelle][key].grid_rowconfigure(0, weight=1)
 
 
     def _build_tree_shop(self):
@@ -180,13 +248,23 @@ class inventoryWindow(blankWindow):
         Funktion um die Trees zu sortieren
         '''
 
-        for col in self.tree_columns:
-            self.tree_shop.heading(col, text = col.title(),
-                              command = lambda c = col: sortby(self.tree_shop, c, 0))
-            self.tree_shop.column(col, width = 60)
+        # for col in self.tree_columns[self.selection]:
+        #     self.tree_shop[self.selection].heading(col, text = col.title(),
+        #                       command = lambda c = col: sortby(self.tree_shop[self.selection], c, 0))
+        #     self.tree_shop[self.selection].column(col, width = 60)
+        #
+        # for i in range(0, len(self.tables[self.tables.keys()[0]])):
+        #     self.tree_shop[self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
+
+        for col in self.tree_columns[self.selection]:
+            self.tree_display["Shop"][self.selection].heading(col, text = col.title(),
+                              command = lambda c = col: sortby(self.tree_display["Shop"][self.selection], c, 0))
+            self.tree_display["Shop"][self.selection].column(col, width = 60)
 
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
-            self.tree_shop.insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
+            self.tree_display["Shop"][self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
+
+
 
 
     def _build_tree_char(self):
@@ -194,10 +272,16 @@ class inventoryWindow(blankWindow):
         Funktion um die Trees zu sortieren
         '''
 
-        for col in self.tree_columns:
-            self.tree_char.heading(col, text = col.title(),
+        # for col in self.tree_columns[self.selection]:
+        #     print(self.tree_columns[self.selection])
+        #     self.tree_char.heading(col, text = col.title(),
+        #                            command = lambda c = col: sortby(self.tree_char, c, 0))
+        #     self.tree_char.column(col, width = 60)
+
+        for col in self.tree_columns[self.selection]:
+            self.tree_display["Inventory"][self.selection].heading(col, text = col.title(),
                                    command = lambda c = col: sortby(self.tree_char, c, 0))
-            self.tree_char.column(col, width = 60)
+            self.tree_display["Inventory"][self.selection].column(col, width = 60)
 
 
     def transfer_right(self, blubb = ""):
