@@ -120,6 +120,7 @@ class inventoryWindow(blankWindow):
         self.getTableHeaders(self.tables, selection)
         self.selection = selection
         print(self.selection)
+        self.switchToGrid(self.selection)
 
 
     def catDropDownBox(self, categories, tables):
@@ -169,51 +170,6 @@ class inventoryWindow(blankWindow):
                      command=lambda col=col: sortby(tree, col, int(not descending)))
 
 
-    # def tree_shop_box(self):
-    #     '''
-    #     Box um die Ausrüstung des Shops anzuzeigen.
-    #     '''
-    #     container = {}
-    #     self.tree_shop = {}
-    #     vsb = {}
-    #     hsb = {}
-    #     for key in self.tree_columns:
-    #
-    #         container[key] = ttk.Frame()
-    #         container[key].grid(column = 0, row = 1, sticky = "nw", rowspan = 3)
-    #         self.tree_shop[key] = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
-    #         vsb[key] = ttk.Scrollbar(orient = "vertical", command = self.tree_shop[key].yview)
-    #         hsb[key] = ttk.Scrollbar(orient = "horizontal", command = self.tree_shop[key].xview)
-    #         self.tree_shop[key].configure(yscrollcommand = vsb[key].set, xscrollcommand = hsb[key].set)
-    #         self.tree_shop[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container[key])
-    #         vsb[key].grid(column = 1, row = 0, sticky = 'ns', in_ = container[key])
-    #         hsb[key].grid(column = 0, row = 1, sticky = 'ew', in_ = container[key])
-    #         container[key].grid_columnconfigure(0, weight = 1)
-    #         container[key].grid_rowconfigure(0, weight = 1)
-
-
-    # def tree_inventory_box(self):
-    #     '''
-    #     Box um das Inventar des aktuellen Charakters anzuzeigen.
-    #     todo: all
-    #     '''
-    #     container = {}
-    #     self.tree_char = {}
-    #     vsb = {}
-    #     hsb = {}
-    #     for key in self.tree_columns:
-    #
-    #         container2[key] = ttk.Frame()
-    #         container2[key].grid(column = 2, row = 1, sticky = "nw", rowspan = 3)
-    #         self.tree_char = ttk.Treeview(columns = self.tree_columns[key], show = "headings")
-    #         vsb = ttk.Scrollbar(orient = "vertical", command = self.tree_char.yview)
-    #         hsb = ttk.Scrollbar(orient = "horizontal", command = self.tree_char.xview)
-    #         self.tree_char[key].configure(yscrollcommand = vsb.set, xscrollcommand = hsb.set)
-    #         self.tree_char[key].grid(column = 0, row = 0, sticky = 'nsew', in_ = container2[key])
-    #         vsb.grid(column = 1, row = 0, sticky = 'ns', in_ = container2[key])
-    #         hsb.grid(column = 0, row = 1, sticky = 'ew', in_ = container2[key])
-    #         container2[key].grid_columnconfigure(0, weight = 1)
-    #         container2[key].grid_rowconfigure(0, weight = 1)
 
 
     def tree_box(self, tabelle, grow, gcolumn):
