@@ -247,7 +247,7 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         print("DEBUG: transfer_right")
-        self.tree_char.insert('', 'end', values = self.tree_shop.item(self.tree_shop.selection())["values"])
+        self.tree_display["Inventory"][self.selection].insert('', 'end', values = self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
 
 
     def delete_from_inventory(self, blubb = ""):
@@ -257,7 +257,7 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         print("DEBUG: delete_from_inventory")
-        self.tree_char.delete(self.tree_char.selection())
+        self.tree_display["Inventory"][self.selection].delete(self.tree_display["Inventory"][self.selection].selection())
 
 
 
