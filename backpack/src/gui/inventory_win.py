@@ -158,16 +158,16 @@ class inventoryWindow(blankWindow):
     def sortby(self, col, descending):
         """Sort tree contents when a column is clicked on."""
         # grab values to sort
-        data = [(tree.set(child, col), child) for child in tree.get_children('')]
+        data = [(self.tree.set(child, col), child) for child in self.tree.get_children('')]
 
         # reorder data
         data.sort(reverse=descending)
         for indx, item in enumerate(data):
-            tree.move(item[1], '', indx)
+            self.tree.move(item[1], '', indx)
 
         # switch the heading so that it will sort in the opposite direction
-        tree.heading(col,
-                     command=lambda col=col: sortby(tree, col, int(not descending)))
+        self.tree.heading(col,
+                     command=lambda col=col: self.sortby(self.tree, col, int(not descending)))
 
 
 
@@ -186,9 +186,7 @@ class inventoryWindow(blankWindow):
         self.hsb[tabelle] = {}
         for key in self.tree_columns:
             self.container[tabelle][key] = ttk.Frame()
-            # self.container[tabelle][key].grid(column=gcolumn, row=grow, sticky="nw", rowspan=3)
             self.tree_display[tabelle][key] = ttk.Treeview(columns=self.tree_columns[key], show="headings")
-
             self.vsb[tabelle][key] = ttk.Scrollbar(orient="vertical", command=self.tree_display[tabelle][key].yview)
             self.hsb[tabelle][key] = ttk.Scrollbar(orient="horizontal", command=self.tree_display[tabelle][key].xview)
             self.tree_display[tabelle][key].configure(yscrollcommand=self.vsb[tabelle][key].set, xscrollcommand=self.hsb[tabelle][self.selection].set)
@@ -214,9 +212,11 @@ class inventoryWindow(blankWindow):
 
         for col in self.tree_columns[self.selection]:
             self.tree_display["Shop"][self.selection].heading(col, text = col.title(),
-                              command = lambda c = col: sortby(self.tree_display["Shop"][self.selection], c, 0))
+                              command = lambda c = col: self.sortby(self.tree_display["Shop"][self.selection], c, 0))
             self.tree_display["Shop"][self.selection].column(col, width = 60)
 
+
+        # \todo Schleife anlegen welche die Werte nach kategorie in die Tabellen füllt.
         for i in range(0, len(self.tables[self.tables.keys()[0]])):
             self.tree_display["Shop"][self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
@@ -243,7 +243,7 @@ class inventoryWindow(blankWindow):
     def transfer_right(self, blubb = ""):
         '''
         Adds the item which is selected in the shop window to the character inventory
-        \param blubb ???
+        \param blubb Dummywert, ungenutzt. Nötig für den Aufrufenden Bind
         :return:
         '''
         print("DEBUG: transfer_right")
@@ -253,7 +253,7 @@ class inventoryWindow(blankWindow):
     def delete_from_inventory(self, blubb = ""):
         '''
         Deletes selected item from character window
-        \param blubb ???
+        \param blubb Dummywert, ungenutzt. Nötig für den Aufrufenden Bind
         :return:
         '''
         print("DEBUG: delete_from_inventory")
