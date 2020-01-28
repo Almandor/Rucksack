@@ -230,25 +230,14 @@ class inventoryWindow(blankWindow):
 
     def _build_tree_char(self):
         '''
-        Funktion um die Trees zu sortieren
+        Funktion um Das Inventoryfenster vorzubereiten
         '''
-
-        # for col in self.tree_columns[self.selection]:
-        #     print(self.tree_columns[self.selection])
-        #     self.tree_char.heading(col, text = col.title(),
-        #                            command = lambda c = col: sortby(self.tree_char, c, 0))
-        #     self.tree_char.column(col, width = 60)
 
         for category in self.tables.keys():
 
             for col in self.tree_columns[category]:
                 self.tree_display["Inventory"][category].heading(col, text = col.title(),
-                                       command = lambda c = col: self.sortby(self.tree_char, c, 0))
-                self.tree_display["Inventory"][category].column(col, width = 60)
-
-            for col in self.tree_columns[self.selection]:
-                self.tree_display["Inventory"][category].heading(col, text = col.title(),
-                                       command = lambda c = col: self.sortby(self.tree_char, c, 0))
+                                  command = lambda c = col: self.sortby(self.tree_display["Inventory"][category], c, 0))
                 self.tree_display["Inventory"][category].column(col, width = 60)
 
 
