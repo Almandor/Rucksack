@@ -47,6 +47,7 @@ class inventoryWindow(blankWindow):
         \param characters ???
 
         '''
+        self.tables = tables
         ## \var self.container
         # Nimmt die Container des Shops und des Inventorys auf.
         self.container = {}
@@ -210,15 +211,19 @@ class inventoryWindow(blankWindow):
         # for i in range(0, len(self.tables[self.tables.keys()[0]])):
         #     self.tree_shop[self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
-        for col in self.tree_columns[self.selection]:
-            self.tree_display["Shop"][self.selection].heading(col, text = col.title(),
-                              command = lambda c = col: self.sortby(self.tree_display["Shop"][self.selection], c, 0))
-            self.tree_display["Shop"][self.selection].column(col, width = 60)
-
 
         # \todo Schleife anlegen welche die Werte nach kategorie in die Tabellen füllt.
-        for i in range(0, len(self.tables[self.tables.keys()[0]])):
-            self.tree_display["Shop"][self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
+
+
+        for category in self.tables.keys():
+
+            for col in self.tree_columns[category]:
+                self.tree_display["Shop"][category].heading(col, text = col.title(),
+                                  command = lambda c = col: self.sortby(self.tree_display["Shop"][category], c, 0))
+                self.tree_display["Shop"][category].column(col, width = 60)
+
+            for i in range(0, len(self.tables[self.tables.keys()[0]])):
+                self.tree_display["Shop"][category].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
 
 
@@ -234,10 +239,17 @@ class inventoryWindow(blankWindow):
         #                            command = lambda c = col: sortby(self.tree_char, c, 0))
         #     self.tree_char.column(col, width = 60)
 
-        for col in self.tree_columns[self.selection]:
-            self.tree_display["Inventory"][self.selection].heading(col, text = col.title(),
-                                   command = lambda c = col: sortby(self.tree_char, c, 0))
-            self.tree_display["Inventory"][self.selection].column(col, width = 60)
+        for category in self.tables.keys():
+
+            for col in self.tree_columns[category]:
+                self.tree_display["Inventory"][category].heading(col, text = col.title(),
+                                       command = lambda c = col: self.sortby(self.tree_char, c, 0))
+                self.tree_display["Inventory"][category].column(col, width = 60)
+
+            for col in self.tree_columns[self.selection]:
+                self.tree_display["Inventory"][category].heading(col, text = col.title(),
+                                       command = lambda c = col: self.sortby(self.tree_char, c, 0))
+                self.tree_display["Inventory"][category].column(col, width = 60)
 
 
     def transfer_right(self, blubb = ""):
