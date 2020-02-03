@@ -156,19 +156,19 @@ class inventoryWindow(blankWindow):
         self.popupMenu.grid(column = 2, row = 0, sticky = "nw")
 
 
-    def sortby(self, col, descending):
+    def sortby(self, tree, col, descending):
         """Sort tree contents when a column is clicked on."""
         # grab values to sort
-        data = [(self.tree.set(child, col), child) for child in self.tree.get_children('')]
+        data = [(tree.set(child, col), child) for child in tree.get_children('')]
 
         # reorder data
         data.sort(reverse=descending)
         for indx, item in enumerate(data):
-            self.tree.move(item[1], '', indx)
+            tree.move(item[1], '', indx)
 
         # switch the heading so that it will sort in the opposite direction
-        self.tree.heading(col,
-                     command=lambda col=col: self.sortby(self.tree, col, int(not descending)))
+        tree.heading(col,
+                     command=lambda col=col: self.sortby(tree, col, int(not descending)))
 
 
 
@@ -200,16 +200,10 @@ class inventoryWindow(blankWindow):
 
     def _build_tree_shop(self):
         '''
-        Funktion um die Trees zu sortieren
+        Fills the shop with merchandise.
+        \bug Sorting does not work properly yet.
         '''
 
-        # for col in self.tree_columns[self.selection]:
-        #     self.tree_shop[self.selection].heading(col, text = col.title(),
-        #                       command = lambda c = col: sortby(self.tree_shop[self.selection], c, 0))
-        #     self.tree_shop[self.selection].column(col, width = 60)
-        #
-        # for i in range(0, len(self.tables[self.tables.keys()[0]])):
-        #     self.tree_shop[self.selection].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
 
 
         # \todo Schleife anlegen welche die Werte nach kategorie in die Tabellen füllt.
@@ -222,8 +216,8 @@ class inventoryWindow(blankWindow):
                                   command = lambda c = col: self.sortby(self.tree_display["Shop"][category], c, 0))
                 self.tree_display["Shop"][category].column(col, width = 60)
 
-            for i in range(0, len(self.tables[self.tables.keys()[0]])):
-                self.tree_display["Shop"][category].insert('', 'end', values = self.tables[self.tables.keys()[0]][i].values())
+            for values in self.tables[category]:
+                self.tree_display["Shop"][category].insert('', 'end', values = values.values())
 
 
 
@@ -272,6 +266,9 @@ class inventoryWindow(blankWindow):
 
         self.button2 = Button(self.window, text = " <-- ", command = self.delete_from_inventory)
         self.button2.grid(column = 1, row = 3)
+
+        self.buttonSave = Button(self.window, text = "Save", command = None)
+        self.buttonSave.grid(column = 2, row = 5, rowspan = 3, sticky = "news")
 
 
     def coinsText(self, coinSum):

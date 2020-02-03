@@ -47,6 +47,7 @@ def getTables(configfile):
     
     '''
     dataDirectory = getConfig.readConfig(configfile)
+    print(dataDirectory)
     categories = listCategories(dataDirectory)
     tables = {}
     for cat in categories:
@@ -93,7 +94,7 @@ def fillTestInventory(tables):
         pprint(inventory)
     return inventory
  
-def loadCharacters(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
+def loadInventory(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
     '''
     Loads Characters from file
      
@@ -117,5 +118,5 @@ def getTableHeaders(tables, selectedCategory):
     print (tables[selectedCategory][0].keys())
     pass
 
-def save_character(name, equipment):
+def save_inventory(name, equipment):
     pass

@@ -48,7 +48,7 @@ if __name__ == '__main__':
     configfile = 'backpack.cfg'
  
     tables = inv.getTables(configfile)
-    characters = inv.loadCharacters(tables)
+    inventory = inv.loadInventory(tables)
     
     
 #     for key in characters.keys():
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 #             print "%s %s"%(char,str(characters[char]))
     
        
-    mywindow = inventory_win.inventoryWindow(tables,characters)
+    mywindow = inventory_win.inventoryWindow(tables,inventory)
     inv.getTableHeaders(tables,"001_Weapons")
     
     
