@@ -7,6 +7,7 @@ inventory_win.py
 
 - Add support for money. Calculation of total cost for items in inventory.
 - Add support for weight. Calculation of total weight for items in inventory.
+- Add extra area below shop and inventory areas which show in detailed form the selected item.
 
 inventory.py
 - Load and Save of Inventory
