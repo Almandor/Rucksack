@@ -267,6 +267,9 @@ class inventoryWindow(blankWindow):
         self.button2 = Button(self.window, text = " <-- ", command = self.delete_from_inventory)
         self.button2.grid(column = 1, row = 3)
 
+        self.buttonLoad = Button(self.window, text = "Load", command = None)
+        self.buttonLoad.grid(column = 0, row = 5, rowspan = 3, sticky = "news")
+
         self.buttonSave = Button(self.window, text = "Save", command = None)
         self.buttonSave.grid(column = 2, row = 5, rowspan = 3, sticky = "news")
 
