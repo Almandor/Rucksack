@@ -1,7 +1,7 @@
 Todo List
 
 inventory_win.py
-- Fix broken sorting. Works currently only on one list and only until the first category switch.
+- Fix broken sorting. Works currently only on one 002_Armor.
 - Fix window resizing. Window should stay the same when changing categories.
 - Fix window resizing. Window components should stick to main window when manually resizing.
 
