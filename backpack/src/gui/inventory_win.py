@@ -256,7 +256,7 @@ class inventoryWindow(blankWindow):
         self.buttonLoad = Button(self.window, text = "Load", command = None)
         self.buttonLoad.grid(column = 0, row = 5, rowspan = 3, sticky = "news")
 
-        self.buttonSave = Button(self.window, text = "Save", command = None)
+        self.buttonSave = Button(self.window, text = "Save", command = self.send_inventory_to_save)
         self.buttonSave.grid(column = 2, row = 5, rowspan = 3, sticky = "news")
 
 
@@ -286,17 +286,17 @@ class inventoryWindow(blankWindow):
         '''
 
 
-        self.charmenu = Menu(master = self.menu)
-        self.menu.add_cascade(label = "Characters",
-                              menu = self.charmenu)
-        self.charmenu.add_command(label = "create new character",
-                                  command = self.__newChar)
-        self.charmenu.add_command(label="delete character",
-                                  command=self.__delChar)
+        # self.charmenu = Menu(master = self.menu)
+        # self.menu.add_cascade(label = "Characters",
+        #                       menu = self.charmenu)
+        # self.charmenu.add_command(label = "create new character",
+        #                           command = self.__newChar)
+        # self.charmenu.add_command(label="delete character",
+        #                           command=self.__delChar)
         self.filemenu = Menu(master = self.menu)
         self.menu.add_cascade(label = "File", menu = self.filemenu)
-        self.filemenu.add_command(label = "Load Character", command = self.__loadChar)
-        self.filemenu.add_command(label="Save Character", command = self.__saveChar)
+        # self.filemenu.add_command(label = "Load Character", command = self.__loadChar)
+        self.filemenu.add_command(label="Save Inventory", command = self.send_inventory_to_save)
 
         self.menu.add_command(label = "Quit!", command = self.window.destroy)
 
@@ -305,31 +305,24 @@ class inventoryWindow(blankWindow):
         pass
 
 
-    def __newChar(self):
-        '''
-        Description ???
-        '''
-        popupEntry("Enter Charaktername")
-
-    def __delChar(self):
+    def load_inventory(self):
         '''
         Description ???
         '''
         pass
 
-    def __loadChar(self):
+    def send_inventory_to_save(self):
         '''
-        Description ???
-        '''
-        pass
-
-    def __saveChar(self):
-        '''
-        Schreibt Charaktere in Datei
+        Sends inventory to Savefunktion inventory.save_inventory
         todo: alles
         '''
-        for child in self.tree_char.get_children():
-            print(self.tree_char.item(child)["values"])  # Todo: Got the items, now I need to save them
+        print(type(self.tree_display["Inventory"]["001_Weapons"].get_children(0)))
+        print(self.tree_display["Inventory"]["001_Weapons"].get_children(0))
+
+        # for number in range(len(self.tree_display["Inventory"]["001_Weapons"].get_children())):
+        #     print(self.tree_display["Inventory"]["001_Weapons"].heading(number, option="text"))
+        for child in self.tree_display["Inventory"]["001_Weapons"].get_children():
+            print(self.tree_display["Inventory"]["001_Weapons"].item(child)["values"])
 
 class popupEntry(blankWindow):
 
