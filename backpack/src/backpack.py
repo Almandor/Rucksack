@@ -32,15 +32,6 @@ from inventory_config import logbox as log
 from gui import window
 from gui import inventory_win
 
-# from unicodedata import category
-
-# import src.modules
-
-
-
-
-
-
 
 if __name__ == '__main__':
   
@@ -48,26 +39,5 @@ if __name__ == '__main__':
     configfile = 'backpack.cfg'
  
     tables = inv.getTables(configfile)
-    inventory = inv.loadInventory(tables)
-    
-    
-#     for key in characters.keys():
-#         print("Filling Character " + key)
-#         characters[key] = inv.fillTestInventory(tables) # Achtung! FillTestInventory hat noch keine Rückgabe!!
-#         for char in characters:
-#             print "%s %s"%(char,str(characters[char]))
-    
-       
-    mywindow = inventory_win.inventoryWindow(tables,inventory)
-    inv.getTableHeaders(tables,"001_Weapons")
-    
-    
+    mywindow = inventory_win.inventoryWindow(tables)
 
-#===============================================================================
-# root = Tk()
-# 
-# labelMain = Label(root, text="Get Inventory")
-# labelMain.grid()
-# 
-# root.mainloop()
-#===============================================================================

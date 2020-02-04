@@ -47,7 +47,6 @@ def getTables(configfile):
     
     '''
     dataDirectory = getConfig.readConfig(configfile)
-    print(dataDirectory)
     categories = listCategories(dataDirectory)
     tables = {}
     for cat in categories:
@@ -61,62 +60,6 @@ def getTables(configfile):
         tables[cat] = entries
     return(tables)
 
-
-def fillTestInventory(tables):
-    '''
-
-    Adds three random Items from shop to player inventory
-    key
-    \param tables Content of temtables as dictionary
-    \param characters List of characters
-    \retval inventory Random dictionary Key = item category, Value = list of items
-    
-
-    ----
-    
-    
-    '''
-    print("fillTestInventory -- Working on it")
-
-    inventory = {}
-    
-    for j in range(0,3):
-        selectcategory = random.randint(0,len(tables)-1)
-        if tables.keys()[selectcategory] not in inventory.keys():
-            inventory[tables.keys()[selectcategory]] = []
-        print("selectcategory= "+ str(selectcategory) + " / " + str(len(tables)))
-        items = tables[list(tables)[selectcategory]]
-        selectitem = random.randint(0,len(items)-1)
-        print("selectitem= "+ str(selectitem) + " / " + str(len(items)))
-        print items[selectitem]['Item']
-        #print items[list(items)[category]][selectitem]['Item']      
-        inventory[tables.keys()[selectcategory]].append(items[selectitem])     
-        pprint(inventory)
-    return inventory
- 
-def loadInventory(tables, characters = {"Char1" : [], "Char2" : [], "Char3" : []}):
-    '''
-    Loads Characters from file
-     
-    For mock purpose it fills the characters manually
-    '''
-    dummyDic = {}
-
-    for key in tables.keys():
-        dummyDic[key] = []
-    
-    # Hier dummyDic mit den Gegenständen füllen
-    
-
-    
-    print("LoadCharacters")
-    logger = log.createLogger("LoadChars", "debug", logpath='', logfile="rucksack.log")
-    logger.debug("Test")
-    return characters
-
-def getTableHeaders(tables, selectedCategory):
-    print (tables[selectedCategory][0].keys())
-    pass
 
 def save_inventory(name, equipment):
     pass

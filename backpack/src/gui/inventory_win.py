@@ -40,7 +40,7 @@ logger = log.createLogger('window', 'debug', '1 MB', 1, logpath = './', logfile 
 class inventoryWindow(blankWindow):
 
 
-    def __init__(self, tables, characters):
+    def __init__(self, tables):
         '''
         Hauptfenster um das Inventar der Charaktere aus einem Shop zu befüllen.
         \param tables Dictionary welches Liste von Dictionaries enthält.
@@ -63,31 +63,25 @@ class inventoryWindow(blankWindow):
         blankWindow.__init__(self)
         self.window.title('Inventory')
         self.catDropDownBox(tables.keys(), tables)
-        self.charDropDownBox(characters.keys())
+        # self.charDropDownBox(characters.keys())
         self.tables = tables
         self.tree_columns = {}
         for key in tables.keys():           # key: 001_Weapons, 001_Weapons
             self.tree_columns[key] = tables[key][0].keys()
-        # print("Debug: ")
-        # print(self.tree_columns)
-        # sys.exit()
-        # self.tree_columns = tables[tables.keys()[0]][0].keys()
         self.selection = list(tables.keys())[0]
         self.tree_data = ""
-        # self.tree_shop_box()
         self.tree_box("Shop", 0, 1)
         self._build_tree_shop()
-        # self.tree_inventory_box()
         self.tree_box("Inventory", 2, 1)
         self.switchToGrid("001_Weapons")
         self._build_tree_char()
         self.addButtons()
         self.window.columnconfigure(0, minsize = 400)
         self.window.columnconfigure(2, minsize = 400)
-        self.getTableHeaders = inv.getTableHeaders
+        # self.getTableHeaders = inv.getTableHeaders
         self.tables = tables
-        self.characters = characters
-        self.getTableHeaders(self.tables, self.tables.keys()[0])
+        # self.characters = characters
+        # self.getTableHeaders(self.tables, self.tables.keys()[0])
         for key in self.tree_columns:
             self.tree_display["Inventory"][key].bind("<Double-1>", self.delete_from_inventory)
             self.tree_display["Shop"][key].bind("<Double-1>", self.transfer_right)
@@ -118,9 +112,8 @@ class inventoryWindow(blankWindow):
         Description ???
         \param selection ???
         '''
-        self.getTableHeaders(self.tables, selection)
+        # self.getTableHeaders(self.tables, selection)
         self.selection = selection
-        print(self.selection)
         self.switchToGrid(self.selection)
 
 
@@ -241,7 +234,6 @@ class inventoryWindow(blankWindow):
         \param blubb Dummywert, ungenutzt. Nötig für den Aufrufenden Bind
         :return:
         '''
-        print("DEBUG: transfer_right")
         self.tree_display["Inventory"][self.selection].insert('', 'end', values = self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
 
 
@@ -251,7 +243,6 @@ class inventoryWindow(blankWindow):
         \param blubb Dummywert, ungenutzt. Nötig für den Aufrufenden Bind
         :return:
         '''
-        print("DEBUG: delete_from_inventory")
         self.tree_display["Inventory"][self.selection].delete(self.tree_display["Inventory"][self.selection].selection())
 
 
