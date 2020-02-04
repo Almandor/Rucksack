@@ -11,3 +11,7 @@ inventory_win.py
 
 inventory.py
 - Load and Save of Inventory
+- change Datadirectory-Variable to Config-Dict which includes Save and Data Directories
+
+inventory_config/getConfig.py
+- Change returnvalue to Dictionary which includes Save directory and Data Directory
