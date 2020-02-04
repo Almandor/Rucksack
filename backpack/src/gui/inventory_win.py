@@ -112,7 +112,6 @@ class inventoryWindow(blankWindow):
         Description ???
         \param selection ???
         '''
-        # self.getTableHeaders(self.tables, selection)
         self.selection = selection
         self.switchToGrid(self.selection)
 
