@@ -63,7 +63,6 @@ class inventoryWindow(blankWindow):
         blankWindow.__init__(self)
         self.window.title('Inventory')
         self.catDropDownBox(tables.keys(), tables)
-        # self.charDropDownBox(characters.keys())
         self.tables = tables
         self.tree_columns = {}
         for key in tables.keys():           # key: 001_Weapons, 001_Weapons
@@ -78,10 +77,7 @@ class inventoryWindow(blankWindow):
         self.addButtons()
         self.window.columnconfigure(0, minsize = 400)
         self.window.columnconfigure(2, minsize = 400)
-        # self.getTableHeaders = inv.getTableHeaders
         self.tables = tables
-        # self.characters = characters
-        # self.getTableHeaders(self.tables, self.tables.keys()[0])
         for key in self.tree_columns:
             self.tree_display["Inventory"][key].bind("<Double-1>", self.delete_from_inventory)
             self.tree_display["Shop"][key].bind("<Double-1>", self.transfer_right)
