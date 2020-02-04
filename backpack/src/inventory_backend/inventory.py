@@ -46,12 +46,12 @@ def getTables(configfile):
     \retval tables Content of temtables as dictionary
     
     '''
-    dataDirectory = getConfig.readConfig(configfile)
-    categories = listCategories(dataDirectory)
+    config_dict = getConfig.readConfig(configfile)
+    categories = listCategories(config_dict["DataDirectory"])
     tables = {}
     for cat in categories:
         entries = []
-        filename = dataDirectory + "/" + cat + ".csv"
+        filename = config_dict["DataDirectory"] + "/" + cat + ".csv"
         with open(filename) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
