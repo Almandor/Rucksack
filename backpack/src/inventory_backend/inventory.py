@@ -11,6 +11,26 @@ from inventory_config import getConfig
 import json
 
 
+class inventoryHandler():
+    '''
+    Handles the inventory operations and keeps the inventory dictionary
+    '''
+    def ___init___(self):
+        self.inventory = {}
+
+    def add(self,item):
+        print(item) # debug_print
+
+    def remove(self,item):
+        pass
+
+    def save(self):
+        pass
+
+    def load(self):
+        pass
+
+
 def listCategories(dataDirectory):
     '''
     

@@ -47,6 +47,7 @@ class inventoryWindow(blankWindow):
         \param characters ???
 
         '''
+        self.inventory = inv.inventoryHandler()
         self.tables = tables
         ## \var self.container
         # Nimmt die Container des Shops und des Inventorys auf.
@@ -230,6 +231,7 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         self.tree_display["Inventory"][self.selection].insert('', 'end', values = self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
+        self.inventory.add(self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
 
 
     def delete_from_inventory(self, blubb = ""):
