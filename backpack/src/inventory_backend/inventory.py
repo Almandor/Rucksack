@@ -43,7 +43,7 @@ def listCategories(dataDirectory):
     try:
         dirContents = os.listdir(dataDirectory)
     except:
-        print("Datadirectory: " + dataDirectory)
+        print(("Datadirectory: " + dataDirectory))
         print("No Data found. Abort")
         sys.exit()
         

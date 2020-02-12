@@ -10,8 +10,8 @@
 \email marcus@lederzeug.de
 \version 1.0
 '''
-from Tkinter import *
-from tkFileDialog import *
+from tkinter import *
+from tkinter.filedialog import *
 from inventory_config import logbox as log
 
 __author__ = "Marcus Schwamberger"

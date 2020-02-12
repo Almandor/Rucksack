@@ -1,5 +1,5 @@
 import os
-import ConfigParser
+import configparser
 
 
 def readConfig(configfile = 'backpack.cfg'):
@@ -14,7 +14,7 @@ def readConfig(configfile = 'backpack.cfg'):
     config_dict = {}
 
     if os.path.isfile(configfile):
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(configfile)
         try:
             config_dict["DataDirectory"] = config.get("global",'DataDirectory')

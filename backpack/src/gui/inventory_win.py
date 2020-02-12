@@ -12,13 +12,13 @@
 \email cw@almandor.de
 \version 1.0
 '''
-from Tkinter import *
-from tkFileDialog import *
+from tkinter import *
+from tkinter.filedialog import *
 from inventory_config import logbox as log
 from gui.window import *
-from inventory_backend import inventory as inv
+from ../inventory_backend import inventory as inv
 from pprint import pprint
-import ttk
+import tkinter.ttk
 import inspect
 import os
 # from PIL import ImageTk, Image
@@ -63,11 +63,11 @@ class inventoryWindow(blankWindow):
         self.hsb = {}
         blankWindow.__init__(self)
         self.window.title('Inventory')
-        self.catDropDownBox(tables.keys(), tables)
+        self.catDropDownBox(list(tables.keys()), tables)
         self.tables = tables
         self.tree_columns = {}
-        for key in tables.keys():           # key: 001_Weapons, 001_Weapons
-            self.tree_columns[key] = tables[key][0].keys()
+        for key in list(tables.keys()):           # key: 001_Weapons, 001_Weapons
+            self.tree_columns[key] = list(tables[key][0].keys())
         self.selection = list(tables.keys())[0]
         self.tree_data = ""
         self.tree_box("Shop", 0, 1)
@@ -93,8 +93,8 @@ class inventoryWindow(blankWindow):
         Funktion zum Ein- und Ausblenden der Container
         \param target Gewünschte Kategorie
         '''
-        for key in self.tables.keys():
-            for entry in self.tree_display.keys():
+        for key in list(self.tables.keys()):
+            for entry in list(self.tree_display.keys()):
                 try:
                     self.container[entry][key].grid_remove()
                 except:
@@ -175,10 +175,10 @@ class inventoryWindow(blankWindow):
         self.vsb[tabelle] = {}
         self.hsb[tabelle] = {}
         for key in self.tree_columns:
-            self.container[tabelle][key] = ttk.Frame()
-            self.tree_display[tabelle][key] = ttk.Treeview(columns=self.tree_columns[key], show="headings")
-            self.vsb[tabelle][key] = ttk.Scrollbar(orient="vertical", command=self.tree_display[tabelle][key].yview)
-            self.hsb[tabelle][key] = ttk.Scrollbar(orient="horizontal", command=self.tree_display[tabelle][key].xview)
+            self.container[tabelle][key] = tkinter.ttk.Frame()
+            self.tree_display[tabelle][key] = tkinter.ttk.Treeview(columns=self.tree_columns[key], show="headings")
+            self.vsb[tabelle][key] = tkinter.ttk.Scrollbar(orient="vertical", command=self.tree_display[tabelle][key].yview)
+            self.hsb[tabelle][key] = tkinter.ttk.Scrollbar(orient="horizontal", command=self.tree_display[tabelle][key].xview)
             self.tree_display[tabelle][key].configure(yscrollcommand=self.vsb[tabelle][key].set, xscrollcommand=self.hsb[tabelle][self.selection].set)
             self.tree_display[tabelle][key].grid(column=0, row=0, sticky='nsew', in_=self.container[tabelle][key])
             self.vsb[tabelle][key].grid(column=1, row=0, sticky='ns', in_=self.container[tabelle][key])
@@ -198,7 +198,7 @@ class inventoryWindow(blankWindow):
         # \todo Schleife anlegen welche die Werte nach kategorie in die Tabellen füllt.
 
 
-        for category in self.tables.keys():
+        for category in list(self.tables.keys()):
 
             for col in self.tree_columns[category]:
                 self.tree_display["Shop"][category].heading(col, text = col.title(),
@@ -206,7 +206,7 @@ class inventoryWindow(blankWindow):
                 self.tree_display["Shop"][category].column(col, width = 60)
 
             for values in self.tables[category]:
-                self.tree_display["Shop"][category].insert('', 'end', values = values.values())
+                self.tree_display["Shop"][category].insert('', 'end', values = list(values.values()))
 
 
 
@@ -216,7 +216,7 @@ class inventoryWindow(blankWindow):
         Funktion um Das Inventoryfenster vorzubereiten
         '''
 
-        for category in self.tables.keys():
+        for category in list(self.tables.keys()):
 
             for col in self.tree_columns[category]:
                 self.tree_display["Inventory"][category].heading(col, text = col.title(),
@@ -318,13 +318,13 @@ class inventoryWindow(blankWindow):
         Sends inventory to Savefunktion inventory.save_inventory
         todo: alles
         '''
-        print(type(self.tree_display["Inventory"]["001_Weapons"].get_children(0)))
-        print(self.tree_display["Inventory"]["001_Weapons"].get_children(0))
+        print((type(self.tree_display["Inventory"]["001_Weapons"].get_children(0))))
+        print((self.tree_display["Inventory"]["001_Weapons"].get_children(0)))
 
         # for number in range(len(self.tree_display["Inventory"]["001_Weapons"].get_children())):
         #     print(self.tree_display["Inventory"]["001_Weapons"].heading(number, option="text"))
         for child in self.tree_display["Inventory"]["001_Weapons"].get_children():
-            print(self.tree_display["Inventory"]["001_Weapons"].item(child)["values"])
+            print((self.tree_display["Inventory"]["001_Weapons"].item(child)["values"]))
 
 class popupEntry(blankWindow):
 
