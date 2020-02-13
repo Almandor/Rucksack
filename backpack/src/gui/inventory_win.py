@@ -14,9 +14,9 @@
 '''
 from tkinter import *
 from tkinter.filedialog import *
-from inventory_config import logbox as log
-from gui.window import *
-from ../inventory_backend import inventory as inv
+import logbox as log
+from window import *
+import inventory as inv
 from pprint import pprint
 import tkinter.ttk
 import inspect

@@ -26,11 +26,19 @@ Done:
 '''
 
 from tkinter import *
+import sys
+import os
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(CURR_DIR)
+sys.path.append(CURR_DIR + "\inventory_backend")
+sys.path.append(CURR_DIR + "\inventory_config")
+sys.path.append(CURR_DIR + "\gui")
+print(CURR_DIR)
 from inventory_backend import inventory as inv
 from pprint import pprint
-from .inventory_config import logbox as log
-from .gui import window
-from .gui import inventory_win
+from inventory_config import logbox as log
+from gui import window
+from gui import inventory_win
 
 
 if __name__ == '__main__':
