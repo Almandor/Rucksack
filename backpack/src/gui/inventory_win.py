@@ -231,7 +231,7 @@ class inventoryWindow(blankWindow):
         :return:
         '''
         self.tree_display["Inventory"][self.selection].insert('', 'end', values = self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
-        self.inventory.add(self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"])
+        self.inventory.add(self.tree_display["Shop"][self.selection].item(self.tree_display["Shop"][self.selection].selection())["values"], self.selection)
 
 
     def delete_from_inventory(self, blubb = ""):

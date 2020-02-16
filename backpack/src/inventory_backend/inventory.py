@@ -18,8 +18,20 @@ class inventoryHandler():
     def ___init___(self):
         self.inventory = {}
 
-    def add(self,item):
-        print(item) # debug_print
+    def add(self, item, selection):
+        '''
+        \param item: Receives the list from the GUI which contains the bought item data
+        \param selection: Contains the selected category as string
+        :return:
+        '''
+        # print(item) # debug_print
+        # print(selection)
+        if selection in self.inventory:
+            self.inventory[selection].append(item)
+        else:
+            self.inventory[selection] = list(item)
+
+        print(self.inventory)
 
     def remove(self,item):
         pass
