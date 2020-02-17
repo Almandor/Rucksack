@@ -318,16 +318,9 @@ class inventoryWindow(blankWindow):
         Sends inventory to Savefunktion inventory.save_inventory
         todo: alles
         '''
-        print((type(self.tree_display["Inventory"]["001_Weapons"].get_children(0))))
-        print((self.tree_display["Inventory"]["001_Weapons"].get_children(0)))
-
-        # for number in range(len(self.tree_display["Inventory"]["001_Weapons"].get_children())):
-        #     print(self.tree_display["Inventory"]["001_Weapons"].heading(number, option="text"))
-        for child in self.tree_display["Inventory"]["001_Weapons"].get_children():
-            print((self.tree_display["Inventory"]["001_Weapons"].item(child)["values"]))
+        self.inventory.save()
 
 class popupEntry(blankWindow):
-
 
     def __init__(self, name):
         '''

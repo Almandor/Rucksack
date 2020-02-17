@@ -15,8 +15,9 @@ class inventoryHandler():
     '''
     Handles the inventory operations and keeps the inventory dictionary
     '''
-    def ___init___(self):
+    def __init__(self):
         self.inventory = {}
+        print("Setting up Inventory...")
 
     def add(self, item, selection):
         '''
@@ -26,18 +27,16 @@ class inventoryHandler():
         '''
         # print(item) # debug_print
         # print(selection)
-        if selection in self.inventory:
+        if selection in self.inventory.keys():
             self.inventory[selection].append(item)
         else:
             self.inventory[selection] = list(item)
-
-        print(self.inventory)
 
     def remove(self,item):
         pass
 
     def save(self):
-        pass
+        print(self.inventory)
 
     def load(self):
         pass
