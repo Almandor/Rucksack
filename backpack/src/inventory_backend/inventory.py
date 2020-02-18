@@ -36,7 +36,7 @@ class inventoryHandler():
         pass
 
     def save(self):
-        print(self.inventory)
+        pprint(self.inventory)
 
     def load(self):
         pass
