@@ -33,8 +33,14 @@ class inventoryHandler():
 
         self.inventory[selection].append(item)
 
-    def remove(self,item):
-        pass
+    def remove(self, item, selection):
+        print(item)
+        try:
+            self.inventory[selection].remove(item)
+        except:
+            pass
+        if len(self.inventory[selection]) == 0:
+            del(self.inventory[selection])
 
     def save(self):
         pprint(self.inventory)

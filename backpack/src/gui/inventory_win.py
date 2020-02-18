@@ -240,7 +240,10 @@ class inventoryWindow(blankWindow):
         \param blubb Dummywert, ungenutzt. Nötig für den Aufrufenden Bind
         :return:
         '''
+        self.inventory.remove(self.tree_display["Inventory"][self.selection].item(self.tree_display["Inventory"][self.selection].selection())["values"], self.selection)
         self.tree_display["Inventory"][self.selection].delete(self.tree_display["Inventory"][self.selection].selection())
+
+
 
 
 
