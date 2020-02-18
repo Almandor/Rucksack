@@ -27,10 +27,11 @@ class inventoryHandler():
         '''
         # print(item) # debug_print
         # print(selection)
-        if selection in self.inventory.keys():
-            self.inventory[selection].append(item)
-        else:
-            self.inventory[selection] = list(item)
+
+        if selection not in self.inventory:
+            self.inventory[selection] = []
+
+        self.inventory[selection].append(item)
 
     def remove(self,item):
         pass
