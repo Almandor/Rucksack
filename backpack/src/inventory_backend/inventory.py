@@ -21,8 +21,8 @@ class inventoryHandler():
 
     def add(self, item, selection):
         '''
-        \param item: Receives the list from the GUI which contains the bought item data
-        \param selection: Contains the selected category as string
+        @param item: Receives the list from the GUI which contains the bought item data
+        @param selection: Contains the selected category as string
         :return:
         '''
         # print(item) # debug_print
@@ -34,6 +34,11 @@ class inventoryHandler():
         self.inventory[selection].append(item)
 
     def remove(self, item, selection):
+        '''
+        @param item: Receives the list from the GUI which contains the removed item data
+        @param selection: Contains the selected category as string
+        :return:
+        '''
         print(item)
         try:
             self.inventory[selection].remove(item)
