@@ -30,9 +30,6 @@ import sys
 import os
 CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(CURR_DIR)
-sys.path.append(CURR_DIR + "\inventory_backend")
-sys.path.append(CURR_DIR + "\inventory_config")
-sys.path.append(CURR_DIR + "\gui")
 from inventory_backend import inventory as inv
 from pprint import pprint
 from inventory_config import logbox as log
