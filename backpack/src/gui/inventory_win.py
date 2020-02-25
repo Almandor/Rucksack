@@ -258,7 +258,7 @@ class inventoryWindow(blankWindow):
         self.button2 = Button(self.window, text = " <-- ", command = self.delete_from_inventory)
         self.button2.grid(column = 1, row = 3)
 
-        self.buttonLoad = Button(self.window, text = "Load", command = None)
+        self.buttonLoad = Button(self.window, text = "Load", command = self.load_inventory_from_save)
         self.buttonLoad.grid(column = 0, row = 5, rowspan = 3, sticky = "news")
 
         self.buttonSave = Button(self.window, text = "Save", command = self.send_inventory_to_save)
@@ -290,31 +290,19 @@ class inventoryWindow(blankWindow):
         :return:
         '''
 
-
-        # self.charmenu = Menu(master = self.menu)
-        # self.menu.add_cascade(label = "Characters",
-        #                       menu = self.charmenu)
-        # self.charmenu.add_command(label = "create new character",
-        #                           command = self.__newChar)
-        # self.charmenu.add_command(label="delete character",
-        #                           command=self.__delChar)
         self.filemenu = Menu(master = self.menu)
         self.menu.add_cascade(label = "File", menu = self.filemenu)
-        # self.filemenu.add_command(label = "Load Character", command = self.__loadChar)
         self.filemenu.add_command(label="Save Inventory", command = self.send_inventory_to_save)
 
         self.menu.add_command(label = "Quit!", command = self.window.destroy)
 
 
-    def dummy(self):
-        pass
 
-
-    def load_inventory(self):
+    def load_inventory_from_save(self):
         '''
         Description ???
         '''
-        pass
+        self.inventory.load()
 
     def send_inventory_to_save(self):
         '''

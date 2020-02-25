@@ -48,10 +48,17 @@ class inventoryHandler():
             del(self.inventory[selection])
 
     def save(self):
-        pprint(self.inventory)
+        # print(json.dumps(self.inventory, sort_keys=True, indent=4))
+        f = open('../save/savefile.json', "w")
+        f.write((json.dumps(self.inventory, sort_keys=True, indent=4)))
+        f.close()
+
 
     def load(self):
-        pass
+        f = open('../save/savefile.json', "r")
+        self.temp = json.loads(f.read())
+        f.close()
+        print(self.temp)
 
 
 def listCategories(dataDirectory):
