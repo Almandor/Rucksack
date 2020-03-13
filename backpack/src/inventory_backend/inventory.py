@@ -58,7 +58,7 @@ class inventoryHandler():
         f = open('../save/savefile.json', "r")
         self.temp = json.loads(f.read())
         f.close()
-        print(self.temp)
+        return self.temp
 
 
 def listCategories(dataDirectory):

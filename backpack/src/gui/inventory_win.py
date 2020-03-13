@@ -302,7 +302,10 @@ class inventoryWindow(blankWindow):
         '''
         Description ???
         '''
-        self.inventory.load()
+        self.temp = self.inventory.load()
+        for key in self.temp.keys():
+            for x in range(len(self.temp[key])):
+                  self.tree_display["Inventory"][key].insert('', 'end', values = self.temp[key][x])
 
     def send_inventory_to_save(self):
         '''
