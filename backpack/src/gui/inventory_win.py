@@ -300,7 +300,7 @@ class inventoryWindow(blankWindow):
 
     def load_inventory_from_save(self):
         '''
-        Description ???
+        Fills Inventory from Tempvariable provided by inventory.load
         '''
         self.temp = self.inventory.load()
         for key in self.temp.keys():
